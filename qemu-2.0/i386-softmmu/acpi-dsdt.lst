@@ -1,0 +1,3000 @@
+
+Intel ACPI Component Architecture
+ASL Optimizing Compiler version 20100528 [Oct 15 2010]
+Copyright (c) 2000 - 2010 Intel Corporation
+Supports ACPI Specification Revision 4.0a
+
+Compilation of "acpi-dsdt.dsl.i" - Fri Jul 11 16:23:35 2014
+
+       1....
+       2..../* ACPI_EXTRACT_ALL_CODE AcpiDsdtAmlCode */
+       3....
+       4....DefinitionBlock (
+       5....    "acpi-dsdt.aml",
+       6....    "DSDT",
+       7....    0x01,
+       8....    "BXPC",
+       9....    "BXDSDT",
+      10....    0x1
+      11....    )
+
+00000000....44 53 44 54 80 11 00 00     "DSDT...."
+00000008....01 5C 42 58 50 43 00 00     ".\BXPC.."
+00000010....42 58 44 53 44 54 00 00     "BXDSDT.."
+00000018....01 00 00 00 49 4E 54 4C     "....INTL"
+00000020....28 05 10 20 ............    "(.. "
+
+      12....{
+      13....Scope(\) {
+
+00000024....10 49 04 5C 00 .........    ".I.\."
+
+      14....    OperationRegion(DBG, SystemIO, 0x0402, 0x01)
+
+[****iasl****]
+acpi-dsdt.dsl.i    14:     OperationRegion(DBG, SystemIO, 0x0402, 0x01)
+Optimize 6033 -          Integer optimized to single-byte AML opcode ^  (One)
+
+
+
+00000029....5B 80 44 42 47 5F 01 0B     "[.DBG_.."
+00000031....02 04 01 ...............    "..."
+
+      15....    Field(DBG, ByteAcc, NoLock, Preserve) {
+      16....        DBGB, 8,
+      17....    }
+
+00000034....5B 81 0B 44 42 47 5F 01     "[..DBG_."
+0000003C....44 42 47 42 08 .........    "DBGB."
+
+      18....    Method(DBUG, 1) {
+
+00000041....14 2C 44 42 55 47 01 ...    ".,DBUG."
+
+      19....        ToHexString(Arg0, Local0)
+
+00000048....98 68 60 ...............    ".h`"
+
+      20....        ToBuffer(Local0, Local0)
+
+0000004B....96 60 60 ...............    ".``"
+
+      21....        Subtract(SizeOf(Local0), 1, Local1)
+
+[****iasl****]
+acpi-dsdt.dsl.i    21:         Subtract(SizeOf(Local0), 1, Local1)
+Optimize 6033 -                                         ^ Integer optimized to single-byte AML opcode (One)
+
+
+
+0000004E....74 .....................    "t"
+0000004F....87 60 01 61 ............    ".`.a"
+
+      22....        Store(Zero, Local2)
+
+00000053....70 00 62 ...............    "p.b"
+
+      23....        While (LLess(Local2, Local1)) {
+
+00000056....A2 10 ..................    ".."
+00000058....95 62 61 ...............    ".ba"
+
+      24....            Store(DerefOf(Index(Local0, Local2)), DBGB)
+
+0000005B....70 .....................    "p"
+0000005C....83 .....................    "."
+0000005D....88 60 62 00 44 42 47 42     ".`b.DBGB"
+
+      25....            Increment(Local2)
+
+00000065....75 62 ..................    "ub"
+
+      26....        }
+      27....        Store(0x0A, DBGB)
+
+00000067....70 0A 0A 44 42 47 42 ...    "p..DBGB"
+
+      28....    }
+      29....}
+      30....    Scope(\_SB) {
+
+[****iasl****]
+acpi-dsdt.dsl.i    30:     Scope(\_SB) {
+Optimize 6058 -  NamePath optimized ^  (_SB_)
+
+
+
+0000006E....10 22 5F 53 42 5F ......    "."_SB_"
+
+      31....        Device(PCI0) {
+
+00000074....5B 82 1B 50 43 49 30 ...    "[..PCI0"
+
+      32....            Name(_HID, EisaId("PNP0A03"))
+
+0000007B....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000083....0A 03 ..................    ".."
+
+      33....            Name(_ADR, 0x00)
+
+[****iasl****]
+acpi-dsdt.dsl.i    33:             Name(_ADR, 0x00)
+Optimize 6033 -                                  ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+00000085....08 5F 41 44 52 00 ......    "._ADR."
+
+      34....            Name(_UID, 1)
+
+[****iasl****]
+acpi-dsdt.dsl.i    34:             Name(_UID, 1)
+Optimize 6033 -                               ^ Integer optimized to single-byte AML opcode (One)
+
+
+
+0000008B....08 5F 55 49 44 01 ......    "._UID."
+
+      35....        }
+      36....    }
+      37....Scope(\_SB.PCI0) {
+
+[****iasl****]
+acpi-dsdt.dsl.i    37: Scope(\_SB.PCI0) {
+Optimize 6058 -   NamePath optimized ^  (_SB_.PCI0)
+
+
+
+00000091....10 4E 18 2E 5F 53 42 5F     ".N.._SB_"
+00000099....50 43 49 30 ............    "PCI0"
+
+      38....    Name(CRES, ResourceTemplate() {
+
+0000009D....08 43 52 45 53 11 42 0A     ".CRES.B."
+000000A5....0A 9E ..................    ".."
+
+      39....        WordBusNumber(ResourceProducer, MinFixed, MaxFixed, PosDecode,
+      40....            0x0000,
+      41....            0x0000,
+      42....            0x00FF,
+      43....            0x0000,
+      44....            0x0100,
+      45....            ,, )
+
+000000A7....88 0D 00 02 0C 00 00 00     "........"
+000000AF....00 00 FF 00 00 00 00 01     "........"
+
+      46....        IO(Decode16,
+      47....            0x0CF8,
+      48....            0x0CF8,
+      49....            0x01,
+      50....            0x08,
+      51....            )
+
+000000B7....47 01 F8 0C F8 0C 01 08     "G......."
+
+      52....        WordIO(ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange, 0x0000, 0x0000, 0x0CF7, 0x0000, 0x0CF8, ,, , TypeStatic) WordIO(ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange, 0x0000, 0x0D00, 0xADFF, 0x0000, 0xA100, ,, , TypeStatic) WordIO(ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange, 0x0000, 0xAE0F, 0xAEFF, 0x0000, 0x00F1, ,, , TypeStatic) WordIO(ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange, 0x0000, 0xAF20, 0xAFDF, 0x0000, 0x00C0, ,, , TypeStatic) WordIO(ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange, 0x0000, 0xAFE4, 0xFFFF, 0x0000, 0x501C, ,, , TypeStatic)
+
+000000BF....88 0D 00 01 0C 03 00 00     "........"
+000000C7....00 00 F7 0C 00 00 F8 0C     "........"
+000000CF....88 0D 00 01 0C 03 00 00     "........"
+000000D7....00 0D FF AD 00 00 00 A1     "........"
+000000DF....88 0D 00 01 0C 03 00 00     "........"
+000000E7....0F AE FF AE 00 00 F1 00     "........"
+000000EF....88 0D 00 01 0C 03 00 00     "........"
+000000F7....20 AF DF AF 00 00 C0 00     " ......."
+000000FF....88 0D 00 01 0C 03 00 00     "........"
+00000107....E4 AF FF FF 00 00 1C 50     ".......P"
+
+      53....        DWordMemory(ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
+      54....            0x00000000,
+      55....            0x000A0000,
+      56....            0x000BFFFF,
+      57....            0x00000000,
+      58....            0x00020000,
+      59....            ,, , AddressRangeMemory, TypeStatic)
+
+0000010F....87 17 00 00 0C 03 00 00     "........"
+00000117....00 00 00 00 0A 00 FF FF     "........"
+0000011F....0B 00 00 00 00 00 00 00     "........"
+00000127....02 00 ..................    ".."
+
+      60....        DWordMemory(ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
+      61....            0x00000000,
+      62....            0xE0000000,
+      63....            0xFEBFFFFF,
+      64....            0x00000000,
+      65....            0x1EC00000,
+      66....            ,, PW32, AddressRangeMemory, TypeStatic)
+
+00000129....87 17 00 00 0C 01 00 00     "........"
+00000131....00 00 00 00 00 E0 FF FF     "........"
+00000139....BF FE 00 00 00 00 00 00     "........"
+00000141....C0 1E ..................    ".."
+00000143....79 00 ..................    "y."
+
+      67....    })
+      68....    Name(CR64, ResourceTemplate() {
+
+00000145....08 43 52 36 34 11 33 0A     ".CR64.3."
+0000014D....30 .....................    "0"
+
+      69....        QWordMemory(ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
+      70....            0x00000000,
+      71....            0x8000000000,
+      72....            0xFFFFFFFFFF,
+      73....            0x00000000,
+      74....            0x8000000000,
+      75....            ,, PW64, AddressRangeMemory, TypeStatic)
+
+0000014E....8A 2B 00 00 0C 03 00 00     ".+......"
+00000156....00 00 00 00 00 00 00 00     "........"
+0000015E....00 00 80 00 00 00 FF FF     "........"
+00000166....FF FF FF 00 00 00 00 00     "........"
+0000016E....00 00 00 00 00 00 00 00     "........"
+00000176....00 00 80 00 00 00 ......    "......"
+0000017C....79 00 ..................    "y."
+
+      76....    })
+      77....    Method(_CRS, 0) {
+
+0000017E....14 41 0A 5F 43 52 53 00     ".A._CRS."
+
+      78....        External(P0S, IntObj)
+      79....        External(P0E, IntObj)
+      80....        External(P1V, IntObj)
+      81....        External(P1S, BuffObj)
+      82....        External(P1E, BuffObj)
+      83....        External(P1L, BuffObj)
+      84....        CreateDWordField(CRES, \_SB.PCI0.PW32._MIN, PS32)
+
+[****iasl****]
+acpi-dsdt.dsl.i    84:         CreateDWordField(CRES, \_SB.PCI0.PW32._MIN, PS32)
+Optimize 6058 -                                      NamePath optimized ^  (^PW32._MIN)
+
+
+
+00000186....8A 43 52 45 53 0A 8C 50     ".CRES..P"
+0000018E....53 33 32 ...............    "S32"
+
+      85....        CreateDWordField(CRES, \_SB.PCI0.PW32._MAX, PE32)
+
+[****iasl****]
+acpi-dsdt.dsl.i    85:         CreateDWordField(CRES, \_SB.PCI0.PW32._MAX, PE32)
+Optimize 6058 -                                      NamePath optimized ^  (^PW32._MAX)
+
+
+
+00000191....8A 43 52 45 53 0A 90 50     ".CRES..P"
+00000199....45 33 32 ...............    "E32"
+
+      86....        CreateDWordField(CRES, \_SB.PCI0.PW32._LEN, PL32)
+
+[****iasl****]
+acpi-dsdt.dsl.i    86:         CreateDWordField(CRES, \_SB.PCI0.PW32._LEN, PL32)
+Optimize 6058 -                                      NamePath optimized ^  (^PW32._LEN)
+
+
+
+0000019C....8A 43 52 45 53 0A 98 50     ".CRES..P"
+000001A4....4C 33 32 ...............    "L32"
+
+      87....        Store(P0S, PS32)
+
+000001A7....70 50 30 53 5F 50 53 33     "pP0S_PS3"
+000001AF....32 .....................    "2"
+
+      88....        Store(P0E, PE32)
+
+000001B0....70 50 30 45 5F 50 45 33     "pP0E_PE3"
+000001B8....32 .....................    "2"
+
+      89....        Store(Add(Subtract(P0E, P0S), 1), PL32)
+
+[****iasl****]
+acpi-dsdt.dsl.i    89:         Store(Add(Subtract(P0E, P0S), 1), PL32)
+Optimize 6033 -  Integer optimized to single-byte AML opcode ^  (One)
+
+
+
+000001B9....70 .....................    "p"
+000001BA....72 .....................    "r"
+000001BB....74 50 30 45 5F 50 30 53     "tP0E_P0S"
+000001C3....5F 00 01 00 50 4C 33 32     "_...PL32"
+
+      90....        If (LEqual(P1V, Zero)) {
+
+000001CB....A0 0C ..................    ".."
+000001CD....93 50 31 56 5F 00 ......    ".P1V_."
+
+      91....            Return (CRES)
+
+000001D3....A4 43 52 45 53 .........    ".CRES"
+
+      92....        }
+      93....        CreateQWordField(CR64, \_SB.PCI0.PW64._MIN, PS64)
+
+[****iasl****]
+acpi-dsdt.dsl.i    93:         CreateQWordField(CR64, \_SB.PCI0.PW64._MIN, PS64)
+Optimize 6058 -                                      NamePath optimized ^  (^PW64._MIN)
+
+
+
+000001D8....8F 43 52 36 34 0A 0E 50     ".CR64..P"
+000001E0....53 36 34 ...............    "S64"
+
+      94....        CreateQWordField(CR64, \_SB.PCI0.PW64._MAX, PE64)
+
+[****iasl****]
+acpi-dsdt.dsl.i    94:         CreateQWordField(CR64, \_SB.PCI0.PW64._MAX, PE64)
+Optimize 6058 -                                      NamePath optimized ^  (^PW64._MAX)
+
+
+
+000001E3....8F 43 52 36 34 0A 16 50     ".CR64..P"
+000001EB....45 36 34 ...............    "E64"
+
+      95....        CreateQWordField(CR64, \_SB.PCI0.PW64._LEN, PL64)
+
+[****iasl****]
+acpi-dsdt.dsl.i    95:         CreateQWordField(CR64, \_SB.PCI0.PW64._LEN, PL64)
+Optimize 6058 -                                      NamePath optimized ^  (^PW64._LEN)
+
+
+
+000001EE....8F 43 52 36 34 0A 26 50     ".CR64.&P"
+000001F6....4C 36 34 ...............    "L64"
+
+      96....        Store(P1S, PS64)
+
+000001F9....70 50 31 53 5F 50 53 36     "pP1S_PS6"
+00000201....34 .....................    "4"
+
+      97....        Store(P1E, PE64)
+
+00000202....70 50 31 45 5F 50 45 36     "pP1E_PE6"
+0000020A....34 .....................    "4"
+
+      98....        Store(P1L, PL64)
+
+0000020B....70 50 31 4C 5F 50 4C 36     "pP1L_PL6"
+00000213....34 .....................    "4"
+
+      99....        ConcatenateResTemplate(CRES, CR64, Local0)
+
+00000214....84 43 52 45 53 43 52 36     ".CRESCR6"
+0000021C....34 60 ..................    "4`"
+
+     100....        Return (Local0)
+
+0000021E....A4 60 ..................    ".`"
+
+     101....    }
+     102....}
+     103....Scope(\_SB) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   103: Scope(\_SB) {
+Optimize 6058 -                 ^ NamePath optimized (_SB_)
+
+
+
+00000220....10 4D 08 5F 53 42 5F ...    ".M._SB_"
+
+     104....    Device(HPET) {
+
+00000227....5B 82 45 08 48 50 45 54     "[.E.HPET"
+
+     105....        Name(_HID, EISAID("PNP0103"))
+
+0000022F....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000237....01 03 ..................    ".."
+
+     106....        Name(_UID, 0)
+
+[****iasl****]
+acpi-dsdt.dsl.i   106:         Name(_UID, 0)
+Optimize 6033 -                           ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+00000239....08 5F 55 49 44 00 ......    "._UID."
+
+     107....        OperationRegion(HPTM, SystemMemory, 0xFED00000, 0x400)
+
+0000023F....5B 80 48 50 54 4D 00 0C     "[.HPTM.."
+00000247....00 00 D0 FE 0B 00 04 ...    "......."
+
+     108....        Field(HPTM, DWordAcc, Lock, Preserve) {
+     109....            VEND, 32,
+     110....            PRD, 32,
+     111....        }
+
+0000024E....5B 81 10 48 50 54 4D 13     "[..HPTM."
+00000256....56 45 4E 44 20 50 52 44     "VEND PRD"
+0000025E....5F 20 ..................    "_ "
+
+     112....        Method(_STA, 0, NotSerialized) {
+
+00000260....14 36 5F 53 54 41 00 ...    ".6_STA."
+
+     113....            Store(VEND, Local0)
+
+00000267....70 56 45 4E 44 60 ......    "pVEND`"
+
+     114....            Store(PRD, Local1)
+
+0000026D....70 50 52 44 5F 61 ......    "pPRD_a"
+
+     115....            ShiftRight(Local0, 16, Local0)
+
+00000273....7A 60 0A 10 60 .........    "z`..`"
+
+     116....            If (LOr(LEqual(Local0, 0), LEqual(Local0, 0xffff))) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   116:             If (LOr(LEqual(Local0, 0), LEqual(Local0, 0xffff))) {
+Optimize 6033 -                                           ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+00000278....A0 0C ..................    ".."
+0000027A....91 .....................    "."
+0000027B....93 60 00 ...............    ".`."
+0000027E....93 60 0B FF FF .........    ".`..."
+
+     117....                Return (0x0)
+
+[****iasl****]
+acpi-dsdt.dsl.i   117:                 Return (0x0)
+Optimize 6033 -                                  ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+00000283....A4 00 ..................    ".."
+
+     118....            }
+     119....            If (LOr(LEqual(Local1, 0), LGreater(Local1, 100000000))) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   119:             If (LOr(LEqual(Local1, 0), LGreater(Local1, 100000000))) {
+Optimize 6033 -                                           ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+00000285....A0 0E ..................    ".."
+00000287....91 .....................    "."
+00000288....93 61 00 ...............    ".a."
+0000028B....94 61 0C 00 E1 F5 05 ...    ".a....."
+
+     120....                Return (0x0)
+
+[****iasl****]
+acpi-dsdt.dsl.i   120:                 Return (0x0)
+Optimize 6033 -                                  ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+00000292....A4 00 ..................    ".."
+
+     121....            }
+     122....            Return (0x0F)
+
+00000294....A4 0A 0F ...............    "..."
+
+     123....        }
+     124....        Name(_CRS, ResourceTemplate() {
+
+00000297....08 5F 43 52 53 11 11 0A     "._CRS..."
+0000029F....0E .....................    "."
+
+     125....            Memory32Fixed(ReadOnly,
+     126....                0xFED00000,
+     127....                0x00000400,
+     128....                )
+
+000002A0....86 09 00 00 00 00 D0 FE     "........"
+000002A8....00 04 00 00 ............    "...."
+000002AC....79 00 ..................    "y."
+
+     129....        })
+     130....    }
+     131....}
+     132....    Scope(\_SB.PCI0) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   132:     Scope(\_SB.PCI0) {
+Optimize 6058 -       NamePath optimized ^  (_SB_.PCI0)
+
+
+
+000002AE....10 25 2E 5F 53 42 5F 50     ".%._SB_P"
+000002B6....43 49 30 ...............    "CI0"
+
+     133....        Device(PX13) {
+
+000002B9....5B 82 19 50 58 31 33 ...    "[..PX13"
+
+     134....            Name(_ADR, 0x00010003)
+
+000002C0....08 5F 41 44 52 0C 03 00     "._ADR..."
+000002C8....01 00 ..................    ".."
+
+     135....            OperationRegion(P13C, PCI_Config, 0x00, 0xff)
+
+[****iasl****]
+acpi-dsdt.dsl.i   135:             OperationRegion(P13C, PCI_Config, 0x00, 0xff)
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+
+000002CA....5B 80 50 31 33 43 02 00     "[.P13C.."
+000002D2....0A FF ..................    ".."
+
+     136....        }
+     137....    }
+     138....    Scope(\_SB.PCI0) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   138:     Scope(\_SB.PCI0) {
+Optimize 6058 -       NamePath optimized ^  (_SB_.PCI0)
+
+
+
+000002D4....10 46 05 2E 5F 53 42 5F     ".F.._SB_"
+000002DC....50 43 49 30 ............    "PCI0"
+
+     139....        External(ISA, DeviceObj)
+     140....        Device(ISA) {
+
+000002E0....5B 82 49 04 49 53 41 5F     "[.I.ISA_"
+
+     141....            Name(_ADR, 0x00010000)
+
+000002E8....08 5F 41 44 52 0C 00 00     "._ADR..."
+000002F0....01 00 ..................    ".."
+
+     142....            OperationRegion(P40C, PCI_Config, 0x60, 0x04)
+
+000002F2....5B 80 50 34 30 43 02 0A     "[.P40C.."
+000002FA....60 0A 04 ...............    "`.."
+
+     143....            Field(\_SB.PCI0.PX13.P13C, AnyAcc, NoLock, Preserve) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   143:             Field(\_SB.PCI0.PX13.P13C, AnyAcc, NoLock, Preserve) {
+Optimize 6058 -                         NamePath optimized ^  (^PX13.P13C)
+
+
+     144....                Offset(0x5f),
+     145....                , 7,
+     146....                LPEN, 1,
+     147....                Offset(0x67),
+     148....                , 3,
+     149....                CAEN, 1,
+     150....                , 3,
+     151....                CBEN, 1,
+     152....            }
+
+000002FD....5B 81 26 5E 2E 50 58 31     "[.&^.PX1"
+00000305....33 50 31 33 43 00 00 48     "3P13C..H"
+0000030D....2F 00 07 4C 50 45 4E 01     "/..LPEN."
+00000315....00 38 00 03 43 41 45 4E     ".8..CAEN"
+0000031D....01 00 03 43 42 45 4E 01     "...CBEN."
+
+     153....            Name(FDEN, 1)
+
+[****iasl****]
+acpi-dsdt.dsl.i   153:             Name(FDEN, 1)
+Optimize 6033 -                               ^ Integer optimized to single-byte AML opcode (One)
+
+
+
+00000325....08 46 44 45 4E 01 ......    ".FDEN."
+
+     154....        }
+     155....    }
+     156....Scope(\_SB.PCI0.ISA) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   156: Scope(\_SB.PCI0.ISA) {
+Optimize 6058 -       NamePath optimized ^  (_SB_.PCI0.ISA_)
+
+
+
+0000032B....10 4A 1E 2F 03 5F 53 42     ".J./._SB"
+00000333....5F 50 43 49 30 49 53 41     "_PCI0ISA"
+0000033B....5F .....................    "_"
+
+     157....    Device (SMC) {
+
+0000033C....5B 82 2C 53 4D 43 5F ...    "[.,SMC_"
+
+     158....        Name(_HID, EisaId("APP0001"))
+
+00000343....08 5F 48 49 44 0C 06 10     "._HID..."
+0000034B....00 01 ..................    ".."
+
+     159....        
+     160..../* ACPI_EXTRACT_NAME_BYTE_CONST piix_dsdt_applesmc_sta */
+     161....
+     162....        Name(_STA, 0xF0)
+
+0000034D....08 5F 53 54 41 0A F0 ...    "._STA.."
+
+     163....        Name(_CRS, ResourceTemplate () {
+
+00000354....08 5F 43 52 53 11 10 0A     "._CRS..."
+0000035C....0D .....................    "."
+
+     164....            IO (Decode16, 0x0300, 0x0300, 0x01, 0x20)
+
+0000035D....47 01 00 03 00 03 01 20     "G...... "
+
+     165....            IRQNoFlags() { 6 }
+
+00000365....22 40 00 ...............    ""@."
+00000368....79 00 ..................    "y."
+
+     166....        })
+     167....    }
+     168....    Device(RTC) {
+
+0000036A....5B 82 2D 52 54 43 5F ...    "[.-RTC_"
+
+     169....        Name(_HID, EisaId("PNP0B00"))
+
+00000371....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000379....0B 00 ..................    ".."
+
+     170....        Name(_CRS, ResourceTemplate() {
+
+0000037B....08 5F 43 52 53 11 18 0A     "._CRS..."
+00000383....15 .....................    "."
+
+     171....            IO(Decode16, 0x0070, 0x0070, 0x10, 0x02)
+
+00000384....47 01 70 00 70 00 10 02     "G.p.p..."
+
+     172....            IRQNoFlags() { 8 }
+
+0000038C....22 00 01 ...............    "".."
+
+     173....            IO(Decode16, 0x0072, 0x0072, 0x02, 0x06)
+
+0000038F....47 01 72 00 72 00 02 06     "G.r.r..."
+00000397....79 00 ..................    "y."
+
+     174....        })
+     175....    }
+     176....    Device(KBD) {
+
+00000399....5B 82 37 4B 42 44 5F ...    "[.7KBD_"
+
+     177....        Name(_HID, EisaId("PNP0303"))
+
+000003A0....08 5F 48 49 44 0C 41 D0     "._HID.A."
+000003A8....03 03 ..................    ".."
+
+     178....        Method(_STA, 0, NotSerialized) {
+
+000003AA....14 09 5F 53 54 41 00 ...    ".._STA."
+
+     179....            Return (0x0f)
+
+000003B1....A4 0A 0F ...............    "..."
+
+     180....        }
+     181....        Name(_CRS, ResourceTemplate() {
+
+000003B4....08 5F 43 52 53 11 18 0A     "._CRS..."
+000003BC....15 .....................    "."
+
+     182....            IO(Decode16, 0x0060, 0x0060, 0x01, 0x01)
+
+000003BD....47 01 60 00 60 00 01 01     "G.`.`..."
+
+     183....            IO(Decode16, 0x0064, 0x0064, 0x01, 0x01)
+
+000003C5....47 01 64 00 64 00 01 01     "G.d.d..."
+
+     184....            IRQNoFlags() { 1 }
+
+000003CD....22 02 00 ...............    "".."
+000003D0....79 00 ..................    "y."
+
+     185....        })
+     186....    }
+     187....    Device(MOU) {
+
+000003D2....5B 82 27 4D 4F 55 5F ...    "[.'MOU_"
+
+     188....        Name(_HID, EisaId("PNP0F13"))
+
+000003D9....08 5F 48 49 44 0C 41 D0     "._HID.A."
+000003E1....0F 13 ..................    ".."
+
+     189....        Method(_STA, 0, NotSerialized) {
+
+000003E3....14 09 5F 53 54 41 00 ...    ".._STA."
+
+     190....            Return (0x0f)
+
+000003EA....A4 0A 0F ...............    "..."
+
+     191....        }
+     192....        Name(_CRS, ResourceTemplate() {
+
+000003ED....08 5F 43 52 53 11 08 0A     "._CRS..."
+000003F5....05 .....................    "."
+
+     193....            IRQNoFlags() { 12 }
+
+000003F6....22 00 10 ...............    "".."
+000003F9....79 00 ..................    "y."
+
+     194....        })
+     195....    }
+     196....    Device(FDC0) {
+
+000003FB....5B 82 4A 04 46 44 43 30     "[.J.FDC0"
+
+     197....        Name(_HID, EisaId("PNP0700"))
+
+00000403....08 5F 48 49 44 0C 41 D0     "._HID.A."
+0000040B....07 00 ..................    ".."
+
+     198....        Method(_STA, 0, NotSerialized) {
+
+0000040D....14 18 5F 53 54 41 00 ...    ".._STA."
+
+     199....            Store(FDEN, Local0)
+
+00000414....70 46 44 45 4E 60 ......    "pFDEN`"
+
+     200....            If (LEqual(Local0, 0)) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   200:             If (LEqual(Local0, 0)) {
+Optimize 6033 -                                       ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+0000041A....A0 06 ..................    ".."
+0000041C....93 60 00 ...............    ".`."
+
+     201....                Return (0x00)
+
+[****iasl****]
+acpi-dsdt.dsl.i   201:                 Return (0x00)
+Optimize 6033 -                                   ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+0000041F....A4 00 ..................    ".."
+
+     202....            } Else {
+     203....                Return (0x0F)
+
+00000421....A1 04 ..................    ".."
+00000423....A4 0A 0F ...............    "..."
+
+     204....            }
+     205....        }
+     206....        Name(_CRS, ResourceTemplate() {
+
+00000426....08 5F 43 52 53 11 1B 0A     "._CRS..."
+0000042E....18 .....................    "."
+
+     207....            IO(Decode16, 0x03F2, 0x03F2, 0x00, 0x04)
+
+0000042F....47 01 F2 03 F2 03 00 04     "G......."
+
+     208....            IO(Decode16, 0x03F7, 0x03F7, 0x00, 0x01)
+
+00000437....47 01 F7 03 F7 03 00 01     "G......."
+
+     209....            IRQNoFlags() { 6 }
+
+0000043F....22 40 00 ...............    ""@."
+
+     210....            DMA(Compatibility, NotBusMaster, Transfer8) { 2 }
+
+00000442....2A 04 00 ...............    "*.."
+00000445....79 00 ..................    "y."
+
+     211....        })
+     212....    }
+     213....    Device(LPT) {
+
+00000447....5B 82 3E 4C 50 54 5F ...    "[.>LPT_"
+
+     214....        Name(_HID, EisaId("PNP0400"))
+
+0000044E....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000456....04 00 ..................    ".."
+
+     215....        Method(_STA, 0, NotSerialized) {
+
+00000458....14 18 5F 53 54 41 00 ...    ".._STA."
+
+     216....            Store(LPEN, Local0)
+
+0000045F....70 4C 50 45 4E 60 ......    "pLPEN`"
+
+     217....            If (LEqual(Local0, 0)) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   217:             If (LEqual(Local0, 0)) {
+Optimize 6033 -                                       ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+00000465....A0 06 ..................    ".."
+00000467....93 60 00 ...............    ".`."
+
+     218....                Return (0x00)
+
+[****iasl****]
+acpi-dsdt.dsl.i   218:                 Return (0x00)
+Optimize 6033 -                                   ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+0000046A....A4 00 ..................    ".."
+
+     219....            } Else {
+     220....                Return (0x0F)
+
+0000046C....A1 04 ..................    ".."
+0000046E....A4 0A 0F ...............    "..."
+
+     221....            }
+     222....        }
+     223....        Name(_CRS, ResourceTemplate() {
+
+00000471....08 5F 43 52 53 11 10 0A     "._CRS..."
+00000479....0D .....................    "."
+
+     224....            IO(Decode16, 0x0378, 0x0378, 0x08, 0x08)
+
+0000047A....47 01 78 03 78 03 08 08     "G.x.x..."
+
+     225....            IRQNoFlags() { 7 }
+
+00000482....22 80 00 ...............    "".."
+00000485....79 00 ..................    "y."
+
+     226....        })
+     227....    }
+     228....    Device(COM1) {
+
+00000487....5B 82 45 04 43 4F 4D 31     "[.E.COM1"
+
+     229....        Name(_HID, EisaId("PNP0501"))
+
+0000048F....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000497....05 01 ..................    ".."
+
+     230....        Name(_UID, 0x01)
+
+[****iasl****]
+acpi-dsdt.dsl.i   230:         Name(_UID, 0x01)
+Optimize 6033 -                              ^ Integer optimized to single-byte AML opcode (One)
+
+
+
+00000499....08 5F 55 49 44 01 ......    "._UID."
+
+     231....        Method(_STA, 0, NotSerialized) {
+
+0000049F....14 18 5F 53 54 41 00 ...    ".._STA."
+
+     232....            Store(CAEN, Local0)
+
+000004A6....70 43 41 45 4E 60 ......    "pCAEN`"
+
+     233....            If (LEqual(Local0, 0)) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   233:             If (LEqual(Local0, 0)) {
+Optimize 6033 -                                       ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+000004AC....A0 06 ..................    ".."
+000004AE....93 60 00 ...............    ".`."
+
+     234....                Return (0x00)
+
+[****iasl****]
+acpi-dsdt.dsl.i   234:                 Return (0x00)
+Optimize 6033 -                                   ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+000004B1....A4 00 ..................    ".."
+
+     235....            } Else {
+     236....                Return (0x0F)
+
+000004B3....A1 04 ..................    ".."
+000004B5....A4 0A 0F ...............    "..."
+
+     237....            }
+     238....        }
+     239....        Name(_CRS, ResourceTemplate() {
+
+000004B8....08 5F 43 52 53 11 10 0A     "._CRS..."
+000004C0....0D .....................    "."
+
+     240....            IO(Decode16, 0x03F8, 0x03F8, 0x00, 0x08)
+
+000004C1....47 01 F8 03 F8 03 00 08     "G......."
+
+     241....            IRQNoFlags() { 4 }
+
+000004C9....22 10 00 ...............    "".."
+000004CC....79 00 ..................    "y."
+
+     242....        })
+     243....    }
+     244....    Device(COM2) {
+
+000004CE....5B 82 46 04 43 4F 4D 32     "[.F.COM2"
+
+     245....        Name(_HID, EisaId("PNP0501"))
+
+000004D6....08 5F 48 49 44 0C 41 D0     "._HID.A."
+000004DE....05 01 ..................    ".."
+
+     246....        Name(_UID, 0x02)
+
+000004E0....08 5F 55 49 44 0A 02 ...    "._UID.."
+
+     247....        Method(_STA, 0, NotSerialized) {
+
+000004E7....14 18 5F 53 54 41 00 ...    ".._STA."
+
+     248....            Store(CBEN, Local0)
+
+000004EE....70 43 42 45 4E 60 ......    "pCBEN`"
+
+     249....            If (LEqual(Local0, 0)) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   249:             If (LEqual(Local0, 0)) {
+Optimize 6033 -                                       ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+000004F4....A0 06 ..................    ".."
+000004F6....93 60 00 ...............    ".`."
+
+     250....                Return (0x00)
+
+[****iasl****]
+acpi-dsdt.dsl.i   250:                 Return (0x00)
+Optimize 6033 -                                   ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+000004F9....A4 00 ..................    ".."
+
+     251....            } Else {
+     252....                Return (0x0F)
+
+000004FB....A1 04 ..................    ".."
+000004FD....A4 0A 0F ...............    "..."
+
+     253....            }
+     254....        }
+     255....        Name(_CRS, ResourceTemplate() {
+
+00000500....08 5F 43 52 53 11 10 0A     "._CRS..."
+00000508....0D .....................    "."
+
+     256....            IO(Decode16, 0x02F8, 0x02F8, 0x00, 0x08)
+
+00000509....47 01 F8 02 F8 02 00 08     "G......."
+
+     257....            IRQNoFlags() { 3 }
+
+00000511....22 08 00 ...............    "".."
+00000514....79 00 ..................    "y."
+
+     258....        })
+     259....    }
+     260....}
+     261....    Scope(\_SB.PCI0) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   261:     Scope(\_SB.PCI0) {
+Optimize 6058 -       NamePath optimized ^  (_SB_.PCI0)
+
+
+
+00000516....10 48 08 2E 5F 53 42 5F     ".H.._SB_"
+0000051E....50 43 49 30 ............    "PCI0"
+
+     262....        OperationRegion(PCST, SystemIO, 0xae00, 0x08)
+
+00000522....5B 80 50 43 53 54 01 0B     "[.PCST.."
+0000052A....00 AE 0A 08 ............    "...."
+
+     263....        Field(PCST, DWordAcc, NoLock, WriteAsZeros) {
+     264....            PCIU, 32,
+     265....            PCID, 32,
+     266....        }
+
+0000052E....5B 81 10 50 43 53 54 43     "[..PCSTC"
+00000536....50 43 49 55 20 50 43 49     "PCIU PCI"
+0000053E....44 20 ..................    "D "
+
+     267....        OperationRegion(SEJ, SystemIO, 0xae08, 0x04)
+
+00000540....5B 80 53 45 4A 5F 01 0B     "[.SEJ_.."
+00000548....08 AE 0A 04 ............    "...."
+
+     268....        Field(SEJ, DWordAcc, NoLock, WriteAsZeros) {
+     269....            B0EJ, 32,
+     270....        }
+
+0000054C....5B 81 0B 53 45 4A 5F 43     "[..SEJ_C"
+00000554....42 30 45 4A 20 .........    "B0EJ "
+
+     271....        OperationRegion(BNMR, SystemIO, 0xae10, 0x04)
+
+00000559....5B 80 42 4E 4D 52 01 0B     "[.BNMR.."
+00000561....10 AE 0A 04 ............    "...."
+
+     272....        Field(BNMR, DWordAcc, NoLock, WriteAsZeros) {
+     273....            BNUM, 32,
+     274....        }
+
+00000565....5B 81 0B 42 4E 4D 52 43     "[..BNMRC"
+0000056D....42 4E 55 4D 20 .........    "BNUM "
+
+     275....        Mutex(BLCK, 0)
+
+00000572....5B 01 42 4C 43 4B 00 ...    "[.BLCK."
+
+     276....        Method(PCEJ, 2, NotSerialized) {
+
+00000579....14 25 50 43 45 4A 02 ...    ".%PCEJ."
+
+     277....            Acquire(BLCK, 0xFFFF)
+
+00000580....5B 23 42 4C 43 4B FF FF     "[#BLCK.."
+
+     278....            Store(Arg0, BNUM)
+
+00000588....70 68 42 4E 55 4D ......    "phBNUM"
+
+     279....            Store(ShiftLeft(1, Arg1), B0EJ)
+
+[****iasl****]
+acpi-dsdt.dsl.i   279:             Store(ShiftLeft(1, Arg1), B0EJ)
+Optimize 6033 -                                    ^ Integer optimized to single-byte AML opcode (One)
+
+
+
+0000058E....70 .....................    "p"
+0000058F....79 01 69 00 42 30 45 4A     "y.i.B0EJ"
+
+     280....            Release(BLCK)
+
+00000597....5B 27 42 4C 43 4B ......    "['BLCK"
+
+     281....            Return (0x0)
+
+[****iasl****]
+acpi-dsdt.dsl.i   281:             Return (0x0)
+Optimize 6033 -                              ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+0000059D....A4 00 ..................    ".."
+
+     282....        }
+     283....        External(\_SB.PCI0.PCNT, MethodObj)
+     284....    }
+     285....    Scope(\_SB) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   285:     Scope(\_SB) {
+Optimize 6058 -  NamePath optimized ^  (_SB_)
+
+
+
+0000059F....10 4A A0 5F 53 42 5F ...    ".J._SB_"
+
+     286....        Scope(PCI0) {
+
+000005A6....10 47 74 50 43 49 30 ...    ".GtPCI0"
+
+     287....            Name(_PRT, Package() {
+     288....                Package() { 0x0000ffff, 0, LNKD, 0 }, Package() { 0x0000ffff, 1, LNKA, 0 }, Package() { 0x0000ffff, 2, LNKB, 0 }, Package() { 0x0000ffff, 3, LNKC, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   288:                 Package() { 0x0000ffff, 0, LNKD, 0 }, Package() { 0x0000ffff, 1, LNKA, 0 }, Package() { 0x0000ffff, 2, LNKB, 0 }, Package() { 0x0000ffff, 3, LNKC, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   288:                 Package() { 0x0000ffff, 0, LNKD, 0 }, Package() { 0x0000ffff, 1, LNKA, 0 }, Package() { 0x0000ffff, 2, LNKB, 0 }, Package() { 0x0000ffff, 3, LNKC, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   288:                 Package() { 0x0000ffff, 0, LNKD, 0 }, Package() { 0x0000ffff, 1, LNKA, 0 }, Package() { 0x0000ffff, 2, LNKB, 0 }, Package() { 0x0000ffff, 3, LNKC, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   288:                 Package() { 0x0000ffff, 0, LNKD, 0 }, Package() { 0x0000ffff, 1, LNKA, 0 }, Package() { 0x0000ffff, 2, LNKB, 0 }, Package() { 0x0000ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   288:                 Package() { 0x0000ffff, 0, LNKD, 0 }, Package() { 0x0000ffff, 1, LNKA, 0 }, Package() { 0x0000ffff, 2, LNKB, 0 }, Package() { 0x0000ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   288:                 Package() { 0x0000ffff, 0, LNKD, 0 }, Package() { 0x0000ffff, 1, LNKA, 0 }, Package() { 0x0000ffff, 2, LNKB, 0 }, Package() { 0x0000ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     289....                Package() { 0x0001ffff, 0, LNKS, 0 }, Package() { 0x0001ffff, 1, LNKB, 0 }, Package() { 0x0001ffff, 2, LNKC, 0 }, Package() { 0x0001ffff, 3, LNKD, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   289:                 Package() { 0x0001ffff, 0, LNKS, 0 }, Package() { 0x0001ffff, 1, LNKB, 0 }, Package() { 0x0001ffff, 2, LNKC, 0 }, Package() { 0x0001ffff, 3, LNKD, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   289:                 Package() { 0x0001ffff, 0, LNKS, 0 }, Package() { 0x0001ffff, 1, LNKB, 0 }, Package() { 0x0001ffff, 2, LNKC, 0 }, Package() { 0x0001ffff, 3, LNKD, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   289:                 Package() { 0x0001ffff, 0, LNKS, 0 }, Package() { 0x0001ffff, 1, LNKB, 0 }, Package() { 0x0001ffff, 2, LNKC, 0 }, Package() { 0x0001ffff, 3, LNKD, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   289:                 Package() { 0x0001ffff, 0, LNKS, 0 }, Package() { 0x0001ffff, 1, LNKB, 0 }, Package() { 0x0001ffff, 2, LNKC, 0 }, Package() { 0x0001ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   289:                 Package() { 0x0001ffff, 0, LNKS, 0 }, Package() { 0x0001ffff, 1, LNKB, 0 }, Package() { 0x0001ffff, 2, LNKC, 0 }, Package() { 0x0001ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   289:                 Package() { 0x0001ffff, 0, LNKS, 0 }, Package() { 0x0001ffff, 1, LNKB, 0 }, Package() { 0x0001ffff, 2, LNKC, 0 }, Package() { 0x0001ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     290....                Package() { 0x0002ffff, 0, LNKB, 0 }, Package() { 0x0002ffff, 1, LNKC, 0 }, Package() { 0x0002ffff, 2, LNKD, 0 }, Package() { 0x0002ffff, 3, LNKA, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   290:                 Package() { 0x0002ffff, 0, LNKB, 0 }, Package() { 0x0002ffff, 1, LNKC, 0 }, Package() { 0x0002ffff, 2, LNKD, 0 }, Package() { 0x0002ffff, 3, LNKA, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   290:                 Package() { 0x0002ffff, 0, LNKB, 0 }, Package() { 0x0002ffff, 1, LNKC, 0 }, Package() { 0x0002ffff, 2, LNKD, 0 }, Package() { 0x0002ffff, 3, LNKA, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   290:                 Package() { 0x0002ffff, 0, LNKB, 0 }, Package() { 0x0002ffff, 1, LNKC, 0 }, Package() { 0x0002ffff, 2, LNKD, 0 }, Package() { 0x0002ffff, 3, LNKA, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   290:                 Package() { 0x0002ffff, 0, LNKB, 0 }, Package() { 0x0002ffff, 1, LNKC, 0 }, Package() { 0x0002ffff, 2, LNKD, 0 }, Package() { 0x0002ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   290:                 Package() { 0x0002ffff, 0, LNKB, 0 }, Package() { 0x0002ffff, 1, LNKC, 0 }, Package() { 0x0002ffff, 2, LNKD, 0 }, Package() { 0x0002ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   290:                 Package() { 0x0002ffff, 0, LNKB, 0 }, Package() { 0x0002ffff, 1, LNKC, 0 }, Package() { 0x0002ffff, 2, LNKD, 0 }, Package() { 0x0002ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     291....                Package() { 0x0003ffff, 0, LNKC, 0 }, Package() { 0x0003ffff, 1, LNKD, 0 }, Package() { 0x0003ffff, 2, LNKA, 0 }, Package() { 0x0003ffff, 3, LNKB, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   291:                 Package() { 0x0003ffff, 0, LNKC, 0 }, Package() { 0x0003ffff, 1, LNKD, 0 }, Package() { 0x0003ffff, 2, LNKA, 0 }, Package() { 0x0003ffff, 3, LNKB, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   291:                 Package() { 0x0003ffff, 0, LNKC, 0 }, Package() { 0x0003ffff, 1, LNKD, 0 }, Package() { 0x0003ffff, 2, LNKA, 0 }, Package() { 0x0003ffff, 3, LNKB, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   291:                 Package() { 0x0003ffff, 0, LNKC, 0 }, Package() { 0x0003ffff, 1, LNKD, 0 }, Package() { 0x0003ffff, 2, LNKA, 0 }, Package() { 0x0003ffff, 3, LNKB, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   291:                 Package() { 0x0003ffff, 0, LNKC, 0 }, Package() { 0x0003ffff, 1, LNKD, 0 }, Package() { 0x0003ffff, 2, LNKA, 0 }, Package() { 0x0003ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   291:                 Package() { 0x0003ffff, 0, LNKC, 0 }, Package() { 0x0003ffff, 1, LNKD, 0 }, Package() { 0x0003ffff, 2, LNKA, 0 }, Package() { 0x0003ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   291:                 Package() { 0x0003ffff, 0, LNKC, 0 }, Package() { 0x0003ffff, 1, LNKD, 0 }, Package() { 0x0003ffff, 2, LNKA, 0 }, Package() { 0x0003ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     292....                Package() { 0x0004ffff, 0, LNKD, 0 }, Package() { 0x0004ffff, 1, LNKA, 0 }, Package() { 0x0004ffff, 2, LNKB, 0 }, Package() { 0x0004ffff, 3, LNKC, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   292:                 Package() { 0x0004ffff, 0, LNKD, 0 }, Package() { 0x0004ffff, 1, LNKA, 0 }, Package() { 0x0004ffff, 2, LNKB, 0 }, Package() { 0x0004ffff, 3, LNKC, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   292:                 Package() { 0x0004ffff, 0, LNKD, 0 }, Package() { 0x0004ffff, 1, LNKA, 0 }, Package() { 0x0004ffff, 2, LNKB, 0 }, Package() { 0x0004ffff, 3, LNKC, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   292:                 Package() { 0x0004ffff, 0, LNKD, 0 }, Package() { 0x0004ffff, 1, LNKA, 0 }, Package() { 0x0004ffff, 2, LNKB, 0 }, Package() { 0x0004ffff, 3, LNKC, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   292:                 Package() { 0x0004ffff, 0, LNKD, 0 }, Package() { 0x0004ffff, 1, LNKA, 0 }, Package() { 0x0004ffff, 2, LNKB, 0 }, Package() { 0x0004ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   292:                 Package() { 0x0004ffff, 0, LNKD, 0 }, Package() { 0x0004ffff, 1, LNKA, 0 }, Package() { 0x0004ffff, 2, LNKB, 0 }, Package() { 0x0004ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   292:                 Package() { 0x0004ffff, 0, LNKD, 0 }, Package() { 0x0004ffff, 1, LNKA, 0 }, Package() { 0x0004ffff, 2, LNKB, 0 }, Package() { 0x0004ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     293....                Package() { 0x0005ffff, 0, LNKA, 0 }, Package() { 0x0005ffff, 1, LNKB, 0 }, Package() { 0x0005ffff, 2, LNKC, 0 }, Package() { 0x0005ffff, 3, LNKD, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   293:                 Package() { 0x0005ffff, 0, LNKA, 0 }, Package() { 0x0005ffff, 1, LNKB, 0 }, Package() { 0x0005ffff, 2, LNKC, 0 }, Package() { 0x0005ffff, 3, LNKD, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   293:                 Package() { 0x0005ffff, 0, LNKA, 0 }, Package() { 0x0005ffff, 1, LNKB, 0 }, Package() { 0x0005ffff, 2, LNKC, 0 }, Package() { 0x0005ffff, 3, LNKD, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   293:                 Package() { 0x0005ffff, 0, LNKA, 0 }, Package() { 0x0005ffff, 1, LNKB, 0 }, Package() { 0x0005ffff, 2, LNKC, 0 }, Package() { 0x0005ffff, 3, LNKD, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   293:                 Package() { 0x0005ffff, 0, LNKA, 0 }, Package() { 0x0005ffff, 1, LNKB, 0 }, Package() { 0x0005ffff, 2, LNKC, 0 }, Package() { 0x0005ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   293:                 Package() { 0x0005ffff, 0, LNKA, 0 }, Package() { 0x0005ffff, 1, LNKB, 0 }, Package() { 0x0005ffff, 2, LNKC, 0 }, Package() { 0x0005ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   293:                 Package() { 0x0005ffff, 0, LNKA, 0 }, Package() { 0x0005ffff, 1, LNKB, 0 }, Package() { 0x0005ffff, 2, LNKC, 0 }, Package() { 0x0005ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     294....                Package() { 0x0006ffff, 0, LNKB, 0 }, Package() { 0x0006ffff, 1, LNKC, 0 }, Package() { 0x0006ffff, 2, LNKD, 0 }, Package() { 0x0006ffff, 3, LNKA, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   294:                 Package() { 0x0006ffff, 0, LNKB, 0 }, Package() { 0x0006ffff, 1, LNKC, 0 }, Package() { 0x0006ffff, 2, LNKD, 0 }, Package() { 0x0006ffff, 3, LNKA, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   294:                 Package() { 0x0006ffff, 0, LNKB, 0 }, Package() { 0x0006ffff, 1, LNKC, 0 }, Package() { 0x0006ffff, 2, LNKD, 0 }, Package() { 0x0006ffff, 3, LNKA, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   294:                 Package() { 0x0006ffff, 0, LNKB, 0 }, Package() { 0x0006ffff, 1, LNKC, 0 }, Package() { 0x0006ffff, 2, LNKD, 0 }, Package() { 0x0006ffff, 3, LNKA, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   294:                 Package() { 0x0006ffff, 0, LNKB, 0 }, Package() { 0x0006ffff, 1, LNKC, 0 }, Package() { 0x0006ffff, 2, LNKD, 0 }, Package() { 0x0006ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   294:                 Package() { 0x0006ffff, 0, LNKB, 0 }, Package() { 0x0006ffff, 1, LNKC, 0 }, Package() { 0x0006ffff, 2, LNKD, 0 }, Package() { 0x0006ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   294:                 Package() { 0x0006ffff, 0, LNKB, 0 }, Package() { 0x0006ffff, 1, LNKC, 0 }, Package() { 0x0006ffff, 2, LNKD, 0 }, Package() { 0x0006ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     295....                Package() { 0x0007ffff, 0, LNKC, 0 }, Package() { 0x0007ffff, 1, LNKD, 0 }, Package() { 0x0007ffff, 2, LNKA, 0 }, Package() { 0x0007ffff, 3, LNKB, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   295:                 Package() { 0x0007ffff, 0, LNKC, 0 }, Package() { 0x0007ffff, 1, LNKD, 0 }, Package() { 0x0007ffff, 2, LNKA, 0 }, Package() { 0x0007ffff, 3, LNKB, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   295:                 Package() { 0x0007ffff, 0, LNKC, 0 }, Package() { 0x0007ffff, 1, LNKD, 0 }, Package() { 0x0007ffff, 2, LNKA, 0 }, Package() { 0x0007ffff, 3, LNKB, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   295:                 Package() { 0x0007ffff, 0, LNKC, 0 }, Package() { 0x0007ffff, 1, LNKD, 0 }, Package() { 0x0007ffff, 2, LNKA, 0 }, Package() { 0x0007ffff, 3, LNKB, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   295:                 Package() { 0x0007ffff, 0, LNKC, 0 }, Package() { 0x0007ffff, 1, LNKD, 0 }, Package() { 0x0007ffff, 2, LNKA, 0 }, Package() { 0x0007ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   295:                 Package() { 0x0007ffff, 0, LNKC, 0 }, Package() { 0x0007ffff, 1, LNKD, 0 }, Package() { 0x0007ffff, 2, LNKA, 0 }, Package() { 0x0007ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   295:                 Package() { 0x0007ffff, 0, LNKC, 0 }, Package() { 0x0007ffff, 1, LNKD, 0 }, Package() { 0x0007ffff, 2, LNKA, 0 }, Package() { 0x0007ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     296....                Package() { 0x0008ffff, 0, LNKD, 0 }, Package() { 0x0008ffff, 1, LNKA, 0 }, Package() { 0x0008ffff, 2, LNKB, 0 }, Package() { 0x0008ffff, 3, LNKC, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   296:                 Package() { 0x0008ffff, 0, LNKD, 0 }, Package() { 0x0008ffff, 1, LNKA, 0 }, Package() { 0x0008ffff, 2, LNKB, 0 }, Package() { 0x0008ffff, 3, LNKC, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   296:                 Package() { 0x0008ffff, 0, LNKD, 0 }, Package() { 0x0008ffff, 1, LNKA, 0 }, Package() { 0x0008ffff, 2, LNKB, 0 }, Package() { 0x0008ffff, 3, LNKC, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   296:                 Package() { 0x0008ffff, 0, LNKD, 0 }, Package() { 0x0008ffff, 1, LNKA, 0 }, Package() { 0x0008ffff, 2, LNKB, 0 }, Package() { 0x0008ffff, 3, LNKC, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   296:                 Package() { 0x0008ffff, 0, LNKD, 0 }, Package() { 0x0008ffff, 1, LNKA, 0 }, Package() { 0x0008ffff, 2, LNKB, 0 }, Package() { 0x0008ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   296:                 Package() { 0x0008ffff, 0, LNKD, 0 }, Package() { 0x0008ffff, 1, LNKA, 0 }, Package() { 0x0008ffff, 2, LNKB, 0 }, Package() { 0x0008ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   296:                 Package() { 0x0008ffff, 0, LNKD, 0 }, Package() { 0x0008ffff, 1, LNKA, 0 }, Package() { 0x0008ffff, 2, LNKB, 0 }, Package() { 0x0008ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     297....                Package() { 0x0009ffff, 0, LNKA, 0 }, Package() { 0x0009ffff, 1, LNKB, 0 }, Package() { 0x0009ffff, 2, LNKC, 0 }, Package() { 0x0009ffff, 3, LNKD, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   297:                 Package() { 0x0009ffff, 0, LNKA, 0 }, Package() { 0x0009ffff, 1, LNKB, 0 }, Package() { 0x0009ffff, 2, LNKC, 0 }, Package() { 0x0009ffff, 3, LNKD, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   297:                 Package() { 0x0009ffff, 0, LNKA, 0 }, Package() { 0x0009ffff, 1, LNKB, 0 }, Package() { 0x0009ffff, 2, LNKC, 0 }, Package() { 0x0009ffff, 3, LNKD, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   297:                 Package() { 0x0009ffff, 0, LNKA, 0 }, Package() { 0x0009ffff, 1, LNKB, 0 }, Package() { 0x0009ffff, 2, LNKC, 0 }, Package() { 0x0009ffff, 3, LNKD, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   297:                 Package() { 0x0009ffff, 0, LNKA, 0 }, Package() { 0x0009ffff, 1, LNKB, 0 }, Package() { 0x0009ffff, 2, LNKC, 0 }, Package() { 0x0009ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   297:                 Package() { 0x0009ffff, 0, LNKA, 0 }, Package() { 0x0009ffff, 1, LNKB, 0 }, Package() { 0x0009ffff, 2, LNKC, 0 }, Package() { 0x0009ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   297:                 Package() { 0x0009ffff, 0, LNKA, 0 }, Package() { 0x0009ffff, 1, LNKB, 0 }, Package() { 0x0009ffff, 2, LNKC, 0 }, Package() { 0x0009ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     298....                Package() { 0x000affff, 0, LNKB, 0 }, Package() { 0x000affff, 1, LNKC, 0 }, Package() { 0x000affff, 2, LNKD, 0 }, Package() { 0x000affff, 3, LNKA, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   298:                 Package() { 0x000affff, 0, LNKB, 0 }, Package() { 0x000affff, 1, LNKC, 0 }, Package() { 0x000affff, 2, LNKD, 0 }, Package() { 0x000affff, 3, LNKA, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   298:                 Package() { 0x000affff, 0, LNKB, 0 }, Package() { 0x000affff, 1, LNKC, 0 }, Package() { 0x000affff, 2, LNKD, 0 }, Package() { 0x000affff, 3, LNKA, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   298:                 Package() { 0x000affff, 0, LNKB, 0 }, Package() { 0x000affff, 1, LNKC, 0 }, Package() { 0x000affff, 2, LNKD, 0 }, Package() { 0x000affff, 3, LNKA, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   298:                 Package() { 0x000affff, 0, LNKB, 0 }, Package() { 0x000affff, 1, LNKC, 0 }, Package() { 0x000affff, 2, LNKD, 0 }, Package() { 0x000affff, 3, LNKA, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   298:                 Package() { 0x000affff, 0, LNKB, 0 }, Package() { 0x000affff, 1, LNKC, 0 }, Package() { 0x000affff, 2, LNKD, 0 }, Package() { 0x000affff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   298:                 Package() { 0x000affff, 0, LNKB, 0 }, Package() { 0x000affff, 1, LNKC, 0 }, Package() { 0x000affff, 2, LNKD, 0 }, Package() { 0x000affff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     299....                Package() { 0x000bffff, 0, LNKC, 0 }, Package() { 0x000bffff, 1, LNKD, 0 }, Package() { 0x000bffff, 2, LNKA, 0 }, Package() { 0x000bffff, 3, LNKB, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   299:                 Package() { 0x000bffff, 0, LNKC, 0 }, Package() { 0x000bffff, 1, LNKD, 0 }, Package() { 0x000bffff, 2, LNKA, 0 }, Package() { 0x000bffff, 3, LNKB, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   299:                 Package() { 0x000bffff, 0, LNKC, 0 }, Package() { 0x000bffff, 1, LNKD, 0 }, Package() { 0x000bffff, 2, LNKA, 0 }, Package() { 0x000bffff, 3, LNKB, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   299:                 Package() { 0x000bffff, 0, LNKC, 0 }, Package() { 0x000bffff, 1, LNKD, 0 }, Package() { 0x000bffff, 2, LNKA, 0 }, Package() { 0x000bffff, 3, LNKB, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   299:                 Package() { 0x000bffff, 0, LNKC, 0 }, Package() { 0x000bffff, 1, LNKD, 0 }, Package() { 0x000bffff, 2, LNKA, 0 }, Package() { 0x000bffff, 3, LNKB, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   299:                 Package() { 0x000bffff, 0, LNKC, 0 }, Package() { 0x000bffff, 1, LNKD, 0 }, Package() { 0x000bffff, 2, LNKA, 0 }, Package() { 0x000bffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   299:                 Package() { 0x000bffff, 0, LNKC, 0 }, Package() { 0x000bffff, 1, LNKD, 0 }, Package() { 0x000bffff, 2, LNKA, 0 }, Package() { 0x000bffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     300....                Package() { 0x000cffff, 0, LNKD, 0 }, Package() { 0x000cffff, 1, LNKA, 0 }, Package() { 0x000cffff, 2, LNKB, 0 }, Package() { 0x000cffff, 3, LNKC, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   300:                 Package() { 0x000cffff, 0, LNKD, 0 }, Package() { 0x000cffff, 1, LNKA, 0 }, Package() { 0x000cffff, 2, LNKB, 0 }, Package() { 0x000cffff, 3, LNKC, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   300:                 Package() { 0x000cffff, 0, LNKD, 0 }, Package() { 0x000cffff, 1, LNKA, 0 }, Package() { 0x000cffff, 2, LNKB, 0 }, Package() { 0x000cffff, 3, LNKC, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   300:                 Package() { 0x000cffff, 0, LNKD, 0 }, Package() { 0x000cffff, 1, LNKA, 0 }, Package() { 0x000cffff, 2, LNKB, 0 }, Package() { 0x000cffff, 3, LNKC, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   300:                 Package() { 0x000cffff, 0, LNKD, 0 }, Package() { 0x000cffff, 1, LNKA, 0 }, Package() { 0x000cffff, 2, LNKB, 0 }, Package() { 0x000cffff, 3, LNKC, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   300:                 Package() { 0x000cffff, 0, LNKD, 0 }, Package() { 0x000cffff, 1, LNKA, 0 }, Package() { 0x000cffff, 2, LNKB, 0 }, Package() { 0x000cffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   300:                 Package() { 0x000cffff, 0, LNKD, 0 }, Package() { 0x000cffff, 1, LNKA, 0 }, Package() { 0x000cffff, 2, LNKB, 0 }, Package() { 0x000cffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     301....                Package() { 0x000dffff, 0, LNKA, 0 }, Package() { 0x000dffff, 1, LNKB, 0 }, Package() { 0x000dffff, 2, LNKC, 0 }, Package() { 0x000dffff, 3, LNKD, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   301:                 Package() { 0x000dffff, 0, LNKA, 0 }, Package() { 0x000dffff, 1, LNKB, 0 }, Package() { 0x000dffff, 2, LNKC, 0 }, Package() { 0x000dffff, 3, LNKD, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   301:                 Package() { 0x000dffff, 0, LNKA, 0 }, Package() { 0x000dffff, 1, LNKB, 0 }, Package() { 0x000dffff, 2, LNKC, 0 }, Package() { 0x000dffff, 3, LNKD, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   301:                 Package() { 0x000dffff, 0, LNKA, 0 }, Package() { 0x000dffff, 1, LNKB, 0 }, Package() { 0x000dffff, 2, LNKC, 0 }, Package() { 0x000dffff, 3, LNKD, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   301:                 Package() { 0x000dffff, 0, LNKA, 0 }, Package() { 0x000dffff, 1, LNKB, 0 }, Package() { 0x000dffff, 2, LNKC, 0 }, Package() { 0x000dffff, 3, LNKD, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   301:                 Package() { 0x000dffff, 0, LNKA, 0 }, Package() { 0x000dffff, 1, LNKB, 0 }, Package() { 0x000dffff, 2, LNKC, 0 }, Package() { 0x000dffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   301:                 Package() { 0x000dffff, 0, LNKA, 0 }, Package() { 0x000dffff, 1, LNKB, 0 }, Package() { 0x000dffff, 2, LNKC, 0 }, Package() { 0x000dffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     302....                Package() { 0x000effff, 0, LNKB, 0 }, Package() { 0x000effff, 1, LNKC, 0 }, Package() { 0x000effff, 2, LNKD, 0 }, Package() { 0x000effff, 3, LNKA, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   302:                 Package() { 0x000effff, 0, LNKB, 0 }, Package() { 0x000effff, 1, LNKC, 0 }, Package() { 0x000effff, 2, LNKD, 0 }, Package() { 0x000effff, 3, LNKA, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   302:                 Package() { 0x000effff, 0, LNKB, 0 }, Package() { 0x000effff, 1, LNKC, 0 }, Package() { 0x000effff, 2, LNKD, 0 }, Package() { 0x000effff, 3, LNKA, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   302:                 Package() { 0x000effff, 0, LNKB, 0 }, Package() { 0x000effff, 1, LNKC, 0 }, Package() { 0x000effff, 2, LNKD, 0 }, Package() { 0x000effff, 3, LNKA, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   302:                 Package() { 0x000effff, 0, LNKB, 0 }, Package() { 0x000effff, 1, LNKC, 0 }, Package() { 0x000effff, 2, LNKD, 0 }, Package() { 0x000effff, 3, LNKA, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   302:                 Package() { 0x000effff, 0, LNKB, 0 }, Package() { 0x000effff, 1, LNKC, 0 }, Package() { 0x000effff, 2, LNKD, 0 }, Package() { 0x000effff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   302:                 Package() { 0x000effff, 0, LNKB, 0 }, Package() { 0x000effff, 1, LNKC, 0 }, Package() { 0x000effff, 2, LNKD, 0 }, Package() { 0x000effff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     303....                Package() { 0x000fffff, 0, LNKC, 0 }, Package() { 0x000fffff, 1, LNKD, 0 }, Package() { 0x000fffff, 2, LNKA, 0 }, Package() { 0x000fffff, 3, LNKB, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   303:                 Package() { 0x000fffff, 0, LNKC, 0 }, Package() { 0x000fffff, 1, LNKD, 0 }, Package() { 0x000fffff, 2, LNKA, 0 }, Package() { 0x000fffff, 3, LNKB, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   303:                 Package() { 0x000fffff, 0, LNKC, 0 }, Package() { 0x000fffff, 1, LNKD, 0 }, Package() { 0x000fffff, 2, LNKA, 0 }, Package() { 0x000fffff, 3, LNKB, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   303:                 Package() { 0x000fffff, 0, LNKC, 0 }, Package() { 0x000fffff, 1, LNKD, 0 }, Package() { 0x000fffff, 2, LNKA, 0 }, Package() { 0x000fffff, 3, LNKB, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   303:                 Package() { 0x000fffff, 0, LNKC, 0 }, Package() { 0x000fffff, 1, LNKD, 0 }, Package() { 0x000fffff, 2, LNKA, 0 }, Package() { 0x000fffff, 3, LNKB, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   303:                 Package() { 0x000fffff, 0, LNKC, 0 }, Package() { 0x000fffff, 1, LNKD, 0 }, Package() { 0x000fffff, 2, LNKA, 0 }, Package() { 0x000fffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   303:                 Package() { 0x000fffff, 0, LNKC, 0 }, Package() { 0x000fffff, 1, LNKD, 0 }, Package() { 0x000fffff, 2, LNKA, 0 }, Package() { 0x000fffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     304....                Package() { 0x0010ffff, 0, LNKD, 0 }, Package() { 0x0010ffff, 1, LNKA, 0 }, Package() { 0x0010ffff, 2, LNKB, 0 }, Package() { 0x0010ffff, 3, LNKC, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   304:                 Package() { 0x0010ffff, 0, LNKD, 0 }, Package() { 0x0010ffff, 1, LNKA, 0 }, Package() { 0x0010ffff, 2, LNKB, 0 }, Package() { 0x0010ffff, 3, LNKC, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   304:                 Package() { 0x0010ffff, 0, LNKD, 0 }, Package() { 0x0010ffff, 1, LNKA, 0 }, Package() { 0x0010ffff, 2, LNKB, 0 }, Package() { 0x0010ffff, 3, LNKC, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   304:                 Package() { 0x0010ffff, 0, LNKD, 0 }, Package() { 0x0010ffff, 1, LNKA, 0 }, Package() { 0x0010ffff, 2, LNKB, 0 }, Package() { 0x0010ffff, 3, LNKC, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   304:                 Package() { 0x0010ffff, 0, LNKD, 0 }, Package() { 0x0010ffff, 1, LNKA, 0 }, Package() { 0x0010ffff, 2, LNKB, 0 }, Package() { 0x0010ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   304:                 Package() { 0x0010ffff, 0, LNKD, 0 }, Package() { 0x0010ffff, 1, LNKA, 0 }, Package() { 0x0010ffff, 2, LNKB, 0 }, Package() { 0x0010ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   304:                 Package() { 0x0010ffff, 0, LNKD, 0 }, Package() { 0x0010ffff, 1, LNKA, 0 }, Package() { 0x0010ffff, 2, LNKB, 0 }, Package() { 0x0010ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     305....                Package() { 0x0011ffff, 0, LNKA, 0 }, Package() { 0x0011ffff, 1, LNKB, 0 }, Package() { 0x0011ffff, 2, LNKC, 0 }, Package() { 0x0011ffff, 3, LNKD, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   305:                 Package() { 0x0011ffff, 0, LNKA, 0 }, Package() { 0x0011ffff, 1, LNKB, 0 }, Package() { 0x0011ffff, 2, LNKC, 0 }, Package() { 0x0011ffff, 3, LNKD, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   305:                 Package() { 0x0011ffff, 0, LNKA, 0 }, Package() { 0x0011ffff, 1, LNKB, 0 }, Package() { 0x0011ffff, 2, LNKC, 0 }, Package() { 0x0011ffff, 3, LNKD, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   305:                 Package() { 0x0011ffff, 0, LNKA, 0 }, Package() { 0x0011ffff, 1, LNKB, 0 }, Package() { 0x0011ffff, 2, LNKC, 0 }, Package() { 0x0011ffff, 3, LNKD, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   305:                 Package() { 0x0011ffff, 0, LNKA, 0 }, Package() { 0x0011ffff, 1, LNKB, 0 }, Package() { 0x0011ffff, 2, LNKC, 0 }, Package() { 0x0011ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   305:                 Package() { 0x0011ffff, 0, LNKA, 0 }, Package() { 0x0011ffff, 1, LNKB, 0 }, Package() { 0x0011ffff, 2, LNKC, 0 }, Package() { 0x0011ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   305:                 Package() { 0x0011ffff, 0, LNKA, 0 }, Package() { 0x0011ffff, 1, LNKB, 0 }, Package() { 0x0011ffff, 2, LNKC, 0 }, Package() { 0x0011ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     306....                Package() { 0x0012ffff, 0, LNKB, 0 }, Package() { 0x0012ffff, 1, LNKC, 0 }, Package() { 0x0012ffff, 2, LNKD, 0 }, Package() { 0x0012ffff, 3, LNKA, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   306:                 Package() { 0x0012ffff, 0, LNKB, 0 }, Package() { 0x0012ffff, 1, LNKC, 0 }, Package() { 0x0012ffff, 2, LNKD, 0 }, Package() { 0x0012ffff, 3, LNKA, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   306:                 Package() { 0x0012ffff, 0, LNKB, 0 }, Package() { 0x0012ffff, 1, LNKC, 0 }, Package() { 0x0012ffff, 2, LNKD, 0 }, Package() { 0x0012ffff, 3, LNKA, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   306:                 Package() { 0x0012ffff, 0, LNKB, 0 }, Package() { 0x0012ffff, 1, LNKC, 0 }, Package() { 0x0012ffff, 2, LNKD, 0 }, Package() { 0x0012ffff, 3, LNKA, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   306:                 Package() { 0x0012ffff, 0, LNKB, 0 }, Package() { 0x0012ffff, 1, LNKC, 0 }, Package() { 0x0012ffff, 2, LNKD, 0 }, Package() { 0x0012ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   306:                 Package() { 0x0012ffff, 0, LNKB, 0 }, Package() { 0x0012ffff, 1, LNKC, 0 }, Package() { 0x0012ffff, 2, LNKD, 0 }, Package() { 0x0012ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   306:                 Package() { 0x0012ffff, 0, LNKB, 0 }, Package() { 0x0012ffff, 1, LNKC, 0 }, Package() { 0x0012ffff, 2, LNKD, 0 }, Package() { 0x0012ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     307....                Package() { 0x0013ffff, 0, LNKC, 0 }, Package() { 0x0013ffff, 1, LNKD, 0 }, Package() { 0x0013ffff, 2, LNKA, 0 }, Package() { 0x0013ffff, 3, LNKB, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   307:                 Package() { 0x0013ffff, 0, LNKC, 0 }, Package() { 0x0013ffff, 1, LNKD, 0 }, Package() { 0x0013ffff, 2, LNKA, 0 }, Package() { 0x0013ffff, 3, LNKB, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   307:                 Package() { 0x0013ffff, 0, LNKC, 0 }, Package() { 0x0013ffff, 1, LNKD, 0 }, Package() { 0x0013ffff, 2, LNKA, 0 }, Package() { 0x0013ffff, 3, LNKB, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   307:                 Package() { 0x0013ffff, 0, LNKC, 0 }, Package() { 0x0013ffff, 1, LNKD, 0 }, Package() { 0x0013ffff, 2, LNKA, 0 }, Package() { 0x0013ffff, 3, LNKB, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   307:                 Package() { 0x0013ffff, 0, LNKC, 0 }, Package() { 0x0013ffff, 1, LNKD, 0 }, Package() { 0x0013ffff, 2, LNKA, 0 }, Package() { 0x0013ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   307:                 Package() { 0x0013ffff, 0, LNKC, 0 }, Package() { 0x0013ffff, 1, LNKD, 0 }, Package() { 0x0013ffff, 2, LNKA, 0 }, Package() { 0x0013ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   307:                 Package() { 0x0013ffff, 0, LNKC, 0 }, Package() { 0x0013ffff, 1, LNKD, 0 }, Package() { 0x0013ffff, 2, LNKA, 0 }, Package() { 0x0013ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     308....                Package() { 0x0014ffff, 0, LNKD, 0 }, Package() { 0x0014ffff, 1, LNKA, 0 }, Package() { 0x0014ffff, 2, LNKB, 0 }, Package() { 0x0014ffff, 3, LNKC, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   308:                 Package() { 0x0014ffff, 0, LNKD, 0 }, Package() { 0x0014ffff, 1, LNKA, 0 }, Package() { 0x0014ffff, 2, LNKB, 0 }, Package() { 0x0014ffff, 3, LNKC, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   308:                 Package() { 0x0014ffff, 0, LNKD, 0 }, Package() { 0x0014ffff, 1, LNKA, 0 }, Package() { 0x0014ffff, 2, LNKB, 0 }, Package() { 0x0014ffff, 3, LNKC, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   308:                 Package() { 0x0014ffff, 0, LNKD, 0 }, Package() { 0x0014ffff, 1, LNKA, 0 }, Package() { 0x0014ffff, 2, LNKB, 0 }, Package() { 0x0014ffff, 3, LNKC, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   308:                 Package() { 0x0014ffff, 0, LNKD, 0 }, Package() { 0x0014ffff, 1, LNKA, 0 }, Package() { 0x0014ffff, 2, LNKB, 0 }, Package() { 0x0014ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   308:                 Package() { 0x0014ffff, 0, LNKD, 0 }, Package() { 0x0014ffff, 1, LNKA, 0 }, Package() { 0x0014ffff, 2, LNKB, 0 }, Package() { 0x0014ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   308:                 Package() { 0x0014ffff, 0, LNKD, 0 }, Package() { 0x0014ffff, 1, LNKA, 0 }, Package() { 0x0014ffff, 2, LNKB, 0 }, Package() { 0x0014ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     309....                Package() { 0x0015ffff, 0, LNKA, 0 }, Package() { 0x0015ffff, 1, LNKB, 0 }, Package() { 0x0015ffff, 2, LNKC, 0 }, Package() { 0x0015ffff, 3, LNKD, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   309:                 Package() { 0x0015ffff, 0, LNKA, 0 }, Package() { 0x0015ffff, 1, LNKB, 0 }, Package() { 0x0015ffff, 2, LNKC, 0 }, Package() { 0x0015ffff, 3, LNKD, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   309:                 Package() { 0x0015ffff, 0, LNKA, 0 }, Package() { 0x0015ffff, 1, LNKB, 0 }, Package() { 0x0015ffff, 2, LNKC, 0 }, Package() { 0x0015ffff, 3, LNKD, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   309:                 Package() { 0x0015ffff, 0, LNKA, 0 }, Package() { 0x0015ffff, 1, LNKB, 0 }, Package() { 0x0015ffff, 2, LNKC, 0 }, Package() { 0x0015ffff, 3, LNKD, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   309:                 Package() { 0x0015ffff, 0, LNKA, 0 }, Package() { 0x0015ffff, 1, LNKB, 0 }, Package() { 0x0015ffff, 2, LNKC, 0 }, Package() { 0x0015ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   309:                 Package() { 0x0015ffff, 0, LNKA, 0 }, Package() { 0x0015ffff, 1, LNKB, 0 }, Package() { 0x0015ffff, 2, LNKC, 0 }, Package() { 0x0015ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   309:                 Package() { 0x0015ffff, 0, LNKA, 0 }, Package() { 0x0015ffff, 1, LNKB, 0 }, Package() { 0x0015ffff, 2, LNKC, 0 }, Package() { 0x0015ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     310....                Package() { 0x0016ffff, 0, LNKB, 0 }, Package() { 0x0016ffff, 1, LNKC, 0 }, Package() { 0x0016ffff, 2, LNKD, 0 }, Package() { 0x0016ffff, 3, LNKA, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   310:                 Package() { 0x0016ffff, 0, LNKB, 0 }, Package() { 0x0016ffff, 1, LNKC, 0 }, Package() { 0x0016ffff, 2, LNKD, 0 }, Package() { 0x0016ffff, 3, LNKA, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   310:                 Package() { 0x0016ffff, 0, LNKB, 0 }, Package() { 0x0016ffff, 1, LNKC, 0 }, Package() { 0x0016ffff, 2, LNKD, 0 }, Package() { 0x0016ffff, 3, LNKA, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   310:                 Package() { 0x0016ffff, 0, LNKB, 0 }, Package() { 0x0016ffff, 1, LNKC, 0 }, Package() { 0x0016ffff, 2, LNKD, 0 }, Package() { 0x0016ffff, 3, LNKA, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   310:                 Package() { 0x0016ffff, 0, LNKB, 0 }, Package() { 0x0016ffff, 1, LNKC, 0 }, Package() { 0x0016ffff, 2, LNKD, 0 }, Package() { 0x0016ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   310:                 Package() { 0x0016ffff, 0, LNKB, 0 }, Package() { 0x0016ffff, 1, LNKC, 0 }, Package() { 0x0016ffff, 2, LNKD, 0 }, Package() { 0x0016ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   310:                 Package() { 0x0016ffff, 0, LNKB, 0 }, Package() { 0x0016ffff, 1, LNKC, 0 }, Package() { 0x0016ffff, 2, LNKD, 0 }, Package() { 0x0016ffff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     311....                Package() { 0x0017ffff, 0, LNKC, 0 }, Package() { 0x0017ffff, 1, LNKD, 0 }, Package() { 0x0017ffff, 2, LNKA, 0 }, Package() { 0x0017ffff, 3, LNKB, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   311:                 Package() { 0x0017ffff, 0, LNKC, 0 }, Package() { 0x0017ffff, 1, LNKD, 0 }, Package() { 0x0017ffff, 2, LNKA, 0 }, Package() { 0x0017ffff, 3, LNKB, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   311:                 Package() { 0x0017ffff, 0, LNKC, 0 }, Package() { 0x0017ffff, 1, LNKD, 0 }, Package() { 0x0017ffff, 2, LNKA, 0 }, Package() { 0x0017ffff, 3, LNKB, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   311:                 Package() { 0x0017ffff, 0, LNKC, 0 }, Package() { 0x0017ffff, 1, LNKD, 0 }, Package() { 0x0017ffff, 2, LNKA, 0 }, Package() { 0x0017ffff, 3, LNKB, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   311:                 Package() { 0x0017ffff, 0, LNKC, 0 }, Package() { 0x0017ffff, 1, LNKD, 0 }, Package() { 0x0017ffff, 2, LNKA, 0 }, Package() { 0x0017ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   311:                 Package() { 0x0017ffff, 0, LNKC, 0 }, Package() { 0x0017ffff, 1, LNKD, 0 }, Package() { 0x0017ffff, 2, LNKA, 0 }, Package() { 0x0017ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   311:                 Package() { 0x0017ffff, 0, LNKC, 0 }, Package() { 0x0017ffff, 1, LNKD, 0 }, Package() { 0x0017ffff, 2, LNKA, 0 }, Package() { 0x0017ffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     312....                Package() { 0x0018ffff, 0, LNKD, 0 }, Package() { 0x0018ffff, 1, LNKA, 0 }, Package() { 0x0018ffff, 2, LNKB, 0 }, Package() { 0x0018ffff, 3, LNKC, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   312:                 Package() { 0x0018ffff, 0, LNKD, 0 }, Package() { 0x0018ffff, 1, LNKA, 0 }, Package() { 0x0018ffff, 2, LNKB, 0 }, Package() { 0x0018ffff, 3, LNKC, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   312:                 Package() { 0x0018ffff, 0, LNKD, 0 }, Package() { 0x0018ffff, 1, LNKA, 0 }, Package() { 0x0018ffff, 2, LNKB, 0 }, Package() { 0x0018ffff, 3, LNKC, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   312:                 Package() { 0x0018ffff, 0, LNKD, 0 }, Package() { 0x0018ffff, 1, LNKA, 0 }, Package() { 0x0018ffff, 2, LNKB, 0 }, Package() { 0x0018ffff, 3, LNKC, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   312:                 Package() { 0x0018ffff, 0, LNKD, 0 }, Package() { 0x0018ffff, 1, LNKA, 0 }, Package() { 0x0018ffff, 2, LNKB, 0 }, Package() { 0x0018ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   312:                 Package() { 0x0018ffff, 0, LNKD, 0 }, Package() { 0x0018ffff, 1, LNKA, 0 }, Package() { 0x0018ffff, 2, LNKB, 0 }, Package() { 0x0018ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   312:                 Package() { 0x0018ffff, 0, LNKD, 0 }, Package() { 0x0018ffff, 1, LNKA, 0 }, Package() { 0x0018ffff, 2, LNKB, 0 }, Package() { 0x0018ffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     313....                Package() { 0x0019ffff, 0, LNKA, 0 }, Package() { 0x0019ffff, 1, LNKB, 0 }, Package() { 0x0019ffff, 2, LNKC, 0 }, Package() { 0x0019ffff, 3, LNKD, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   313:                 Package() { 0x0019ffff, 0, LNKA, 0 }, Package() { 0x0019ffff, 1, LNKB, 0 }, Package() { 0x0019ffff, 2, LNKC, 0 }, Package() { 0x0019ffff, 3, LNKD, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   313:                 Package() { 0x0019ffff, 0, LNKA, 0 }, Package() { 0x0019ffff, 1, LNKB, 0 }, Package() { 0x0019ffff, 2, LNKC, 0 }, Package() { 0x0019ffff, 3, LNKD, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   313:                 Package() { 0x0019ffff, 0, LNKA, 0 }, Package() { 0x0019ffff, 1, LNKB, 0 }, Package() { 0x0019ffff, 2, LNKC, 0 }, Package() { 0x0019ffff, 3, LNKD, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   313:                 Package() { 0x0019ffff, 0, LNKA, 0 }, Package() { 0x0019ffff, 1, LNKB, 0 }, Package() { 0x0019ffff, 2, LNKC, 0 }, Package() { 0x0019ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   313:                 Package() { 0x0019ffff, 0, LNKA, 0 }, Package() { 0x0019ffff, 1, LNKB, 0 }, Package() { 0x0019ffff, 2, LNKC, 0 }, Package() { 0x0019ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   313:                 Package() { 0x0019ffff, 0, LNKA, 0 }, Package() { 0x0019ffff, 1, LNKB, 0 }, Package() { 0x0019ffff, 2, LNKC, 0 }, Package() { 0x0019ffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     314....                Package() { 0x001affff, 0, LNKB, 0 }, Package() { 0x001affff, 1, LNKC, 0 }, Package() { 0x001affff, 2, LNKD, 0 }, Package() { 0x001affff, 3, LNKA, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   314:                 Package() { 0x001affff, 0, LNKB, 0 }, Package() { 0x001affff, 1, LNKC, 0 }, Package() { 0x001affff, 2, LNKD, 0 }, Package() { 0x001affff, 3, LNKA, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   314:                 Package() { 0x001affff, 0, LNKB, 0 }, Package() { 0x001affff, 1, LNKC, 0 }, Package() { 0x001affff, 2, LNKD, 0 }, Package() { 0x001affff, 3, LNKA, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   314:                 Package() { 0x001affff, 0, LNKB, 0 }, Package() { 0x001affff, 1, LNKC, 0 }, Package() { 0x001affff, 2, LNKD, 0 }, Package() { 0x001affff, 3, LNKA, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   314:                 Package() { 0x001affff, 0, LNKB, 0 }, Package() { 0x001affff, 1, LNKC, 0 }, Package() { 0x001affff, 2, LNKD, 0 }, Package() { 0x001affff, 3, LNKA, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   314:                 Package() { 0x001affff, 0, LNKB, 0 }, Package() { 0x001affff, 1, LNKC, 0 }, Package() { 0x001affff, 2, LNKD, 0 }, Package() { 0x001affff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   314:                 Package() { 0x001affff, 0, LNKB, 0 }, Package() { 0x001affff, 1, LNKC, 0 }, Package() { 0x001affff, 2, LNKD, 0 }, Package() { 0x001affff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     315....                Package() { 0x001bffff, 0, LNKC, 0 }, Package() { 0x001bffff, 1, LNKD, 0 }, Package() { 0x001bffff, 2, LNKA, 0 }, Package() { 0x001bffff, 3, LNKB, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   315:                 Package() { 0x001bffff, 0, LNKC, 0 }, Package() { 0x001bffff, 1, LNKD, 0 }, Package() { 0x001bffff, 2, LNKA, 0 }, Package() { 0x001bffff, 3, LNKB, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   315:                 Package() { 0x001bffff, 0, LNKC, 0 }, Package() { 0x001bffff, 1, LNKD, 0 }, Package() { 0x001bffff, 2, LNKA, 0 }, Package() { 0x001bffff, 3, LNKB, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   315:                 Package() { 0x001bffff, 0, LNKC, 0 }, Package() { 0x001bffff, 1, LNKD, 0 }, Package() { 0x001bffff, 2, LNKA, 0 }, Package() { 0x001bffff, 3, LNKB, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   315:                 Package() { 0x001bffff, 0, LNKC, 0 }, Package() { 0x001bffff, 1, LNKD, 0 }, Package() { 0x001bffff, 2, LNKA, 0 }, Package() { 0x001bffff, 3, LNKB, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   315:                 Package() { 0x001bffff, 0, LNKC, 0 }, Package() { 0x001bffff, 1, LNKD, 0 }, Package() { 0x001bffff, 2, LNKA, 0 }, Package() { 0x001bffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   315:                 Package() { 0x001bffff, 0, LNKC, 0 }, Package() { 0x001bffff, 1, LNKD, 0 }, Package() { 0x001bffff, 2, LNKA, 0 }, Package() { 0x001bffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     316....                Package() { 0x001cffff, 0, LNKD, 0 }, Package() { 0x001cffff, 1, LNKA, 0 }, Package() { 0x001cffff, 2, LNKB, 0 }, Package() { 0x001cffff, 3, LNKC, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   316:                 Package() { 0x001cffff, 0, LNKD, 0 }, Package() { 0x001cffff, 1, LNKA, 0 }, Package() { 0x001cffff, 2, LNKB, 0 }, Package() { 0x001cffff, 3, LNKC, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   316:                 Package() { 0x001cffff, 0, LNKD, 0 }, Package() { 0x001cffff, 1, LNKA, 0 }, Package() { 0x001cffff, 2, LNKB, 0 }, Package() { 0x001cffff, 3, LNKC, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   316:                 Package() { 0x001cffff, 0, LNKD, 0 }, Package() { 0x001cffff, 1, LNKA, 0 }, Package() { 0x001cffff, 2, LNKB, 0 }, Package() { 0x001cffff, 3, LNKC, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   316:                 Package() { 0x001cffff, 0, LNKD, 0 }, Package() { 0x001cffff, 1, LNKA, 0 }, Package() { 0x001cffff, 2, LNKB, 0 }, Package() { 0x001cffff, 3, LNKC, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   316:                 Package() { 0x001cffff, 0, LNKD, 0 }, Package() { 0x001cffff, 1, LNKA, 0 }, Package() { 0x001cffff, 2, LNKB, 0 }, Package() { 0x001cffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   316:                 Package() { 0x001cffff, 0, LNKD, 0 }, Package() { 0x001cffff, 1, LNKA, 0 }, Package() { 0x001cffff, 2, LNKB, 0 }, Package() { 0x001cffff, 3, LNKC, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     317....                Package() { 0x001dffff, 0, LNKA, 0 }, Package() { 0x001dffff, 1, LNKB, 0 }, Package() { 0x001dffff, 2, LNKC, 0 }, Package() { 0x001dffff, 3, LNKD, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   317:                 Package() { 0x001dffff, 0, LNKA, 0 }, Package() { 0x001dffff, 1, LNKB, 0 }, Package() { 0x001dffff, 2, LNKC, 0 }, Package() { 0x001dffff, 3, LNKD, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   317:                 Package() { 0x001dffff, 0, LNKA, 0 }, Package() { 0x001dffff, 1, LNKB, 0 }, Package() { 0x001dffff, 2, LNKC, 0 }, Package() { 0x001dffff, 3, LNKD, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   317:                 Package() { 0x001dffff, 0, LNKA, 0 }, Package() { 0x001dffff, 1, LNKB, 0 }, Package() { 0x001dffff, 2, LNKC, 0 }, Package() { 0x001dffff, 3, LNKD, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   317:                 Package() { 0x001dffff, 0, LNKA, 0 }, Package() { 0x001dffff, 1, LNKB, 0 }, Package() { 0x001dffff, 2, LNKC, 0 }, Package() { 0x001dffff, 3, LNKD, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   317:                 Package() { 0x001dffff, 0, LNKA, 0 }, Package() { 0x001dffff, 1, LNKB, 0 }, Package() { 0x001dffff, 2, LNKC, 0 }, Package() { 0x001dffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   317:                 Package() { 0x001dffff, 0, LNKA, 0 }, Package() { 0x001dffff, 1, LNKB, 0 }, Package() { 0x001dffff, 2, LNKC, 0 }, Package() { 0x001dffff, 3, LNKD, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     318....                Package() { 0x001effff, 0, LNKB, 0 }, Package() { 0x001effff, 1, LNKC, 0 }, Package() { 0x001effff, 2, LNKD, 0 }, Package() { 0x001effff, 3, LNKA, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   318:                 Package() { 0x001effff, 0, LNKB, 0 }, Package() { 0x001effff, 1, LNKC, 0 }, Package() { 0x001effff, 2, LNKD, 0 }, Package() { 0x001effff, 3, LNKA, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   318:                 Package() { 0x001effff, 0, LNKB, 0 }, Package() { 0x001effff, 1, LNKC, 0 }, Package() { 0x001effff, 2, LNKD, 0 }, Package() { 0x001effff, 3, LNKA, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   318:                 Package() { 0x001effff, 0, LNKB, 0 }, Package() { 0x001effff, 1, LNKC, 0 }, Package() { 0x001effff, 2, LNKD, 0 }, Package() { 0x001effff, 3, LNKA, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   318:                 Package() { 0x001effff, 0, LNKB, 0 }, Package() { 0x001effff, 1, LNKC, 0 }, Package() { 0x001effff, 2, LNKD, 0 }, Package() { 0x001effff, 3, LNKA, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   318:                 Package() { 0x001effff, 0, LNKB, 0 }, Package() { 0x001effff, 1, LNKC, 0 }, Package() { 0x001effff, 2, LNKD, 0 }, Package() { 0x001effff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   318:                 Package() { 0x001effff, 0, LNKB, 0 }, Package() { 0x001effff, 1, LNKC, 0 }, Package() { 0x001effff, 2, LNKD, 0 }, Package() { 0x001effff, 3, LNKA, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     319....                Package() { 0x001fffff, 0, LNKC, 0 }, Package() { 0x001fffff, 1, LNKD, 0 }, Package() { 0x001fffff, 2, LNKA, 0 }, Package() { 0x001fffff, 3, LNKB, 0 },
+
+[****iasl****]
+acpi-dsdt.dsl.i   319:                 Package() { 0x001fffff, 0, LNKC, 0 }, Package() { 0x001fffff, 1, LNKD, 0 }, Package() { 0x001fffff, 2, LNKA, 0 }, Package() { 0x001fffff, 3, LNKB, 0 },
+Optimize 6033 -    Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   319:                 Package() { 0x001fffff, 0, LNKC, 0 }, Package() { 0x001fffff, 1, LNKD, 0 }, Package() { 0x001fffff, 2, LNKA, 0 }, Package() { 0x001fffff, 3, LNKB, 0 },
+Optimize 6033 -             Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   319:                 Package() { 0x001fffff, 0, LNKC, 0 }, Package() { 0x001fffff, 1, LNKD, 0 }, Package() { 0x001fffff, 2, LNKA, 0 }, Package() { 0x001fffff, 3, LNKB, 0 },
+Optimize 6033 -                                          Integer optimized to single-byte AML opcode ^  (One)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   319:                 Package() { 0x001fffff, 0, LNKC, 0 }, Package() { 0x001fffff, 1, LNKD, 0 }, Package() { 0x001fffff, 2, LNKA, 0 }, Package() { 0x001fffff, 3, LNKB, 0 },
+Optimize 6033 -                                                   Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   319:                 Package() { 0x001fffff, 0, LNKC, 0 }, Package() { 0x001fffff, 1, LNKD, 0 }, Package() { 0x001fffff, 2, LNKA, 0 }, Package() { 0x001fffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                         Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+[****iasl****]
+acpi-dsdt.dsl.i   319:                 Package() { 0x001fffff, 0, LNKC, 0 }, Package() { 0x001fffff, 1, LNKD, 0 }, Package() { 0x001fffff, 2, LNKA, 0 }, Package() { 0x001fffff, 3, LNKB, 0 },
+Optimize 6033 -                                                                                                                               Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+     320....            })
+
+000005AD....08 5F 50 52 54 .........    "._PRT"
+000005B2....12 4B 73 80 ............    ".Ks."
+000005B6....12 0B 04 0B FF FF 00 4C     ".......L"
+000005BE....4E 4B 44 00 ............    "NKD."
+000005C2....12 0B 04 0B FF FF 01 4C     ".......L"
+000005CA....4E 4B 41 00 ............    "NKA."
+000005CE....12 0C 04 0B FF FF 0A 02     "........"
+000005D6....4C 4E 4B 42 00 .........    "LNKB."
+000005DB....12 0C 04 0B FF FF 0A 03     "........"
+000005E3....4C 4E 4B 43 00 .........    "LNKC."
+000005E8....12 0D 04 0C FF FF 01 00     "........"
+000005F0....00 4C 4E 4B 53 00 ......    ".LNKS."
+000005F6....12 0D 04 0C FF FF 01 00     "........"
+000005FE....01 4C 4E 4B 42 00 ......    ".LNKB."
+00000604....12 0E 04 0C FF FF 01 00     "........"
+0000060C....0A 02 4C 4E 4B 43 00 ...    "..LNKC."
+00000613....12 0E 04 0C FF FF 01 00     "........"
+0000061B....0A 03 4C 4E 4B 44 00 ...    "..LNKD."
+00000622....12 0D 04 0C FF FF 02 00     "........"
+0000062A....00 4C 4E 4B 42 00 ......    ".LNKB."
+00000630....12 0D 04 0C FF FF 02 00     "........"
+00000638....01 4C 4E 4B 43 00 ......    ".LNKC."
+0000063E....12 0E 04 0C FF FF 02 00     "........"
+00000646....0A 02 4C 4E 4B 44 00 ...    "..LNKD."
+0000064D....12 0E 04 0C FF FF 02 00     "........"
+00000655....0A 03 4C 4E 4B 41 00 ...    "..LNKA."
+0000065C....12 0D 04 0C FF FF 03 00     "........"
+00000664....00 4C 4E 4B 43 00 ......    ".LNKC."
+0000066A....12 0D 04 0C FF FF 03 00     "........"
+00000672....01 4C 4E 4B 44 00 ......    ".LNKD."
+00000678....12 0E 04 0C FF FF 03 00     "........"
+00000680....0A 02 4C 4E 4B 41 00 ...    "..LNKA."
+00000687....12 0E 04 0C FF FF 03 00     "........"
+0000068F....0A 03 4C 4E 4B 42 00 ...    "..LNKB."
+00000696....12 0D 04 0C FF FF 04 00     "........"
+0000069E....00 4C 4E 4B 44 00 ......    ".LNKD."
+000006A4....12 0D 04 0C FF FF 04 00     "........"
+000006AC....01 4C 4E 4B 41 00 ......    ".LNKA."
+000006B2....12 0E 04 0C FF FF 04 00     "........"
+000006BA....0A 02 4C 4E 4B 42 00 ...    "..LNKB."
+000006C1....12 0E 04 0C FF FF 04 00     "........"
+000006C9....0A 03 4C 4E 4B 43 00 ...    "..LNKC."
+000006D0....12 0D 04 0C FF FF 05 00     "........"
+000006D8....00 4C 4E 4B 41 00 ......    ".LNKA."
+000006DE....12 0D 04 0C FF FF 05 00     "........"
+000006E6....01 4C 4E 4B 42 00 ......    ".LNKB."
+000006EC....12 0E 04 0C FF FF 05 00     "........"
+000006F4....0A 02 4C 4E 4B 43 00 ...    "..LNKC."
+000006FB....12 0E 04 0C FF FF 05 00     "........"
+00000703....0A 03 4C 4E 4B 44 00 ...    "..LNKD."
+0000070A....12 0D 04 0C FF FF 06 00     "........"
+00000712....00 4C 4E 4B 42 00 ......    ".LNKB."
+00000718....12 0D 04 0C FF FF 06 00     "........"
+00000720....01 4C 4E 4B 43 00 ......    ".LNKC."
+00000726....12 0E 04 0C FF FF 06 00     "........"
+0000072E....0A 02 4C 4E 4B 44 00 ...    "..LNKD."
+00000735....12 0E 04 0C FF FF 06 00     "........"
+0000073D....0A 03 4C 4E 4B 41 00 ...    "..LNKA."
+00000744....12 0D 04 0C FF FF 07 00     "........"
+0000074C....00 4C 4E 4B 43 00 ......    ".LNKC."
+00000752....12 0D 04 0C FF FF 07 00     "........"
+0000075A....01 4C 4E 4B 44 00 ......    ".LNKD."
+00000760....12 0E 04 0C FF FF 07 00     "........"
+00000768....0A 02 4C 4E 4B 41 00 ...    "..LNKA."
+0000076F....12 0E 04 0C FF FF 07 00     "........"
+00000777....0A 03 4C 4E 4B 42 00 ...    "..LNKB."
+0000077E....12 0D 04 0C FF FF 08 00     "........"
+00000786....00 4C 4E 4B 44 00 ......    ".LNKD."
+0000078C....12 0D 04 0C FF FF 08 00     "........"
+00000794....01 4C 4E 4B 41 00 ......    ".LNKA."
+0000079A....12 0E 04 0C FF FF 08 00     "........"
+000007A2....0A 02 4C 4E 4B 42 00 ...    "..LNKB."
+000007A9....12 0E 04 0C FF FF 08 00     "........"
+000007B1....0A 03 4C 4E 4B 43 00 ...    "..LNKC."
+000007B8....12 0D 04 0C FF FF 09 00     "........"
+000007C0....00 4C 4E 4B 41 00 ......    ".LNKA."
+000007C6....12 0D 04 0C FF FF 09 00     "........"
+000007CE....01 4C 4E 4B 42 00 ......    ".LNKB."
+000007D4....12 0E 04 0C FF FF 09 00     "........"
+000007DC....0A 02 4C 4E 4B 43 00 ...    "..LNKC."
+000007E3....12 0E 04 0C FF FF 09 00     "........"
+000007EB....0A 03 4C 4E 4B 44 00 ...    "..LNKD."
+000007F2....12 0D 04 0C FF FF 0A 00     "........"
+000007FA....00 4C 4E 4B 42 00 ......    ".LNKB."
+00000800....12 0D 04 0C FF FF 0A 00     "........"
+00000808....01 4C 4E 4B 43 00 ......    ".LNKC."
+0000080E....12 0E 04 0C FF FF 0A 00     "........"
+00000816....0A 02 4C 4E 4B 44 00 ...    "..LNKD."
+0000081D....12 0E 04 0C FF FF 0A 00     "........"
+00000825....0A 03 4C 4E 4B 41 00 ...    "..LNKA."
+0000082C....12 0D 04 0C FF FF 0B 00     "........"
+00000834....00 4C 4E 4B 43 00 ......    ".LNKC."
+0000083A....12 0D 04 0C FF FF 0B 00     "........"
+00000842....01 4C 4E 4B 44 00 ......    ".LNKD."
+00000848....12 0E 04 0C FF FF 0B 00     "........"
+00000850....0A 02 4C 4E 4B 41 00 ...    "..LNKA."
+00000857....12 0E 04 0C FF FF 0B 00     "........"
+0000085F....0A 03 4C 4E 4B 42 00 ...    "..LNKB."
+00000866....12 0D 04 0C FF FF 0C 00     "........"
+0000086E....00 4C 4E 4B 44 00 ......    ".LNKD."
+00000874....12 0D 04 0C FF FF 0C 00     "........"
+0000087C....01 4C 4E 4B 41 00 ......    ".LNKA."
+00000882....12 0E 04 0C FF FF 0C 00     "........"
+0000088A....0A 02 4C 4E 4B 42 00 ...    "..LNKB."
+00000891....12 0E 04 0C FF FF 0C 00     "........"
+00000899....0A 03 4C 4E 4B 43 00 ...    "..LNKC."
+000008A0....12 0D 04 0C FF FF 0D 00     "........"
+000008A8....00 4C 4E 4B 41 00 ......    ".LNKA."
+000008AE....12 0D 04 0C FF FF 0D 00     "........"
+000008B6....01 4C 4E 4B 42 00 ......    ".LNKB."
+000008BC....12 0E 04 0C FF FF 0D 00     "........"
+000008C4....0A 02 4C 4E 4B 43 00 ...    "..LNKC."
+000008CB....12 0E 04 0C FF FF 0D 00     "........"
+000008D3....0A 03 4C 4E 4B 44 00 ...    "..LNKD."
+000008DA....12 0D 04 0C FF FF 0E 00     "........"
+000008E2....00 4C 4E 4B 42 00 ......    ".LNKB."
+000008E8....12 0D 04 0C FF FF 0E 00     "........"
+000008F0....01 4C 4E 4B 43 00 ......    ".LNKC."
+000008F6....12 0E 04 0C FF FF 0E 00     "........"
+000008FE....0A 02 4C 4E 4B 44 00 ...    "..LNKD."
+00000905....12 0E 04 0C FF FF 0E 00     "........"
+0000090D....0A 03 4C 4E 4B 41 00 ...    "..LNKA."
+00000914....12 0D 04 0C FF FF 0F 00     "........"
+0000091C....00 4C 4E 4B 43 00 ......    ".LNKC."
+00000922....12 0D 04 0C FF FF 0F 00     "........"
+0000092A....01 4C 4E 4B 44 00 ......    ".LNKD."
+00000930....12 0E 04 0C FF FF 0F 00     "........"
+00000938....0A 02 4C 4E 4B 41 00 ...    "..LNKA."
+0000093F....12 0E 04 0C FF FF 0F 00     "........"
+00000947....0A 03 4C 4E 4B 42 00 ...    "..LNKB."
+0000094E....12 0D 04 0C FF FF 10 00     "........"
+00000956....00 4C 4E 4B 44 00 ......    ".LNKD."
+0000095C....12 0D 04 0C FF FF 10 00     "........"
+00000964....01 4C 4E 4B 41 00 ......    ".LNKA."
+0000096A....12 0E 04 0C FF FF 10 00     "........"
+00000972....0A 02 4C 4E 4B 42 00 ...    "..LNKB."
+00000979....12 0E 04 0C FF FF 10 00     "........"
+00000981....0A 03 4C 4E 4B 43 00 ...    "..LNKC."
+00000988....12 0D 04 0C FF FF 11 00     "........"
+00000990....00 4C 4E 4B 41 00 ......    ".LNKA."
+00000996....12 0D 04 0C FF FF 11 00     "........"
+0000099E....01 4C 4E 4B 42 00 ......    ".LNKB."
+000009A4....12 0E 04 0C FF FF 11 00     "........"
+000009AC....0A 02 4C 4E 4B 43 00 ...    "..LNKC."
+000009B3....12 0E 04 0C FF FF 11 00     "........"
+000009BB....0A 03 4C 4E 4B 44 00 ...    "..LNKD."
+000009C2....12 0D 04 0C FF FF 12 00     "........"
+000009CA....00 4C 4E 4B 42 00 ......    ".LNKB."
+000009D0....12 0D 04 0C FF FF 12 00     "........"
+000009D8....01 4C 4E 4B 43 00 ......    ".LNKC."
+000009DE....12 0E 04 0C FF FF 12 00     "........"
+000009E6....0A 02 4C 4E 4B 44 00 ...    "..LNKD."
+000009ED....12 0E 04 0C FF FF 12 00     "........"
+000009F5....0A 03 4C 4E 4B 41 00 ...    "..LNKA."
+000009FC....12 0D 04 0C FF FF 13 00     "........"
+00000A04....00 4C 4E 4B 43 00 ......    ".LNKC."
+00000A0A....12 0D 04 0C FF FF 13 00     "........"
+00000A12....01 4C 4E 4B 44 00 ......    ".LNKD."
+00000A18....12 0E 04 0C FF FF 13 00     "........"
+00000A20....0A 02 4C 4E 4B 41 00 ...    "..LNKA."
+00000A27....12 0E 04 0C FF FF 13 00     "........"
+00000A2F....0A 03 4C 4E 4B 42 00 ...    "..LNKB."
+00000A36....12 0D 04 0C FF FF 14 00     "........"
+00000A3E....00 4C 4E 4B 44 00 ......    ".LNKD."
+00000A44....12 0D 04 0C FF FF 14 00     "........"
+00000A4C....01 4C 4E 4B 41 00 ......    ".LNKA."
+00000A52....12 0E 04 0C FF FF 14 00     "........"
+00000A5A....0A 02 4C 4E 4B 42 00 ...    "..LNKB."
+00000A61....12 0E 04 0C FF FF 14 00     "........"
+00000A69....0A 03 4C 4E 4B 43 00 ...    "..LNKC."
+00000A70....12 0D 04 0C FF FF 15 00     "........"
+00000A78....00 4C 4E 4B 41 00 ......    ".LNKA."
+00000A7E....12 0D 04 0C FF FF 15 00     "........"
+00000A86....01 4C 4E 4B 42 00 ......    ".LNKB."
+00000A8C....12 0E 04 0C FF FF 15 00     "........"
+00000A94....0A 02 4C 4E 4B 43 00 ...    "..LNKC."
+00000A9B....12 0E 04 0C FF FF 15 00     "........"
+00000AA3....0A 03 4C 4E 4B 44 00 ...    "..LNKD."
+00000AAA....12 0D 04 0C FF FF 16 00     "........"
+00000AB2....00 4C 4E 4B 42 00 ......    ".LNKB."
+00000AB8....12 0D 04 0C FF FF 16 00     "........"
+00000AC0....01 4C 4E 4B 43 00 ......    ".LNKC."
+00000AC6....12 0E 04 0C FF FF 16 00     "........"
+00000ACE....0A 02 4C 4E 4B 44 00 ...    "..LNKD."
+00000AD5....12 0E 04 0C FF FF 16 00     "........"
+00000ADD....0A 03 4C 4E 4B 41 00 ...    "..LNKA."
+00000AE4....12 0D 04 0C FF FF 17 00     "........"
+00000AEC....00 4C 4E 4B 43 00 ......    ".LNKC."
+00000AF2....12 0D 04 0C FF FF 17 00     "........"
+00000AFA....01 4C 4E 4B 44 00 ......    ".LNKD."
+00000B00....12 0E 04 0C FF FF 17 00     "........"
+00000B08....0A 02 4C 4E 4B 41 00 ...    "..LNKA."
+00000B0F....12 0E 04 0C FF FF 17 00     "........"
+00000B17....0A 03 4C 4E 4B 42 00 ...    "..LNKB."
+00000B1E....12 0D 04 0C FF FF 18 00     "........"
+00000B26....00 4C 4E 4B 44 00 ......    ".LNKD."
+00000B2C....12 0D 04 0C FF FF 18 00     "........"
+00000B34....01 4C 4E 4B 41 00 ......    ".LNKA."
+00000B3A....12 0E 04 0C FF FF 18 00     "........"
+00000B42....0A 02 4C 4E 4B 42 00 ...    "..LNKB."
+00000B49....12 0E 04 0C FF FF 18 00     "........"
+00000B51....0A 03 4C 4E 4B 43 00 ...    "..LNKC."
+00000B58....12 0D 04 0C FF FF 19 00     "........"
+00000B60....00 4C 4E 4B 41 00 ......    ".LNKA."
+00000B66....12 0D 04 0C FF FF 19 00     "........"
+00000B6E....01 4C 4E 4B 42 00 ......    ".LNKB."
+00000B74....12 0E 04 0C FF FF 19 00     "........"
+00000B7C....0A 02 4C 4E 4B 43 00 ...    "..LNKC."
+00000B83....12 0E 04 0C FF FF 19 00     "........"
+00000B8B....0A 03 4C 4E 4B 44 00 ...    "..LNKD."
+00000B92....12 0D 04 0C FF FF 1A 00     "........"
+00000B9A....00 4C 4E 4B 42 00 ......    ".LNKB."
+00000BA0....12 0D 04 0C FF FF 1A 00     "........"
+00000BA8....01 4C 4E 4B 43 00 ......    ".LNKC."
+00000BAE....12 0E 04 0C FF FF 1A 00     "........"
+00000BB6....0A 02 4C 4E 4B 44 00 ...    "..LNKD."
+00000BBD....12 0E 04 0C FF FF 1A 00     "........"
+00000BC5....0A 03 4C 4E 4B 41 00 ...    "..LNKA."
+00000BCC....12 0D 04 0C FF FF 1B 00     "........"
+00000BD4....00 4C 4E 4B 43 00 ......    ".LNKC."
+00000BDA....12 0D 04 0C FF FF 1B 00     "........"
+00000BE2....01 4C 4E 4B 44 00 ......    ".LNKD."
+00000BE8....12 0E 04 0C FF FF 1B 00     "........"
+00000BF0....0A 02 4C 4E 4B 41 00 ...    "..LNKA."
+00000BF7....12 0E 04 0C FF FF 1B 00     "........"
+00000BFF....0A 03 4C 4E 4B 42 00 ...    "..LNKB."
+00000C06....12 0D 04 0C FF FF 1C 00     "........"
+00000C0E....00 4C 4E 4B 44 00 ......    ".LNKD."
+00000C14....12 0D 04 0C FF FF 1C 00     "........"
+00000C1C....01 4C 4E 4B 41 00 ......    ".LNKA."
+00000C22....12 0E 04 0C FF FF 1C 00     "........"
+00000C2A....0A 02 4C 4E 4B 42 00 ...    "..LNKB."
+00000C31....12 0E 04 0C FF FF 1C 00     "........"
+00000C39....0A 03 4C 4E 4B 43 00 ...    "..LNKC."
+00000C40....12 0D 04 0C FF FF 1D 00     "........"
+00000C48....00 4C 4E 4B 41 00 ......    ".LNKA."
+00000C4E....12 0D 04 0C FF FF 1D 00     "........"
+00000C56....01 4C 4E 4B 42 00 ......    ".LNKB."
+00000C5C....12 0E 04 0C FF FF 1D 00     "........"
+00000C64....0A 02 4C 4E 4B 43 00 ...    "..LNKC."
+00000C6B....12 0E 04 0C FF FF 1D 00     "........"
+00000C73....0A 03 4C 4E 4B 44 00 ...    "..LNKD."
+00000C7A....12 0D 04 0C FF FF 1E 00     "........"
+00000C82....00 4C 4E 4B 42 00 ......    ".LNKB."
+00000C88....12 0D 04 0C FF FF 1E 00     "........"
+00000C90....01 4C 4E 4B 43 00 ......    ".LNKC."
+00000C96....12 0E 04 0C FF FF 1E 00     "........"
+00000C9E....0A 02 4C 4E 4B 44 00 ...    "..LNKD."
+00000CA5....12 0E 04 0C FF FF 1E 00     "........"
+00000CAD....0A 03 4C 4E 4B 41 00 ...    "..LNKA."
+00000CB4....12 0D 04 0C FF FF 1F 00     "........"
+00000CBC....00 4C 4E 4B 43 00 ......    ".LNKC."
+00000CC2....12 0D 04 0C FF FF 1F 00     "........"
+00000CCA....01 4C 4E 4B 44 00 ......    ".LNKD."
+00000CD0....12 0E 04 0C FF FF 1F 00     "........"
+00000CD8....0A 02 4C 4E 4B 41 00 ...    "..LNKA."
+00000CDF....12 0E 04 0C FF FF 1F 00     "........"
+00000CE7....0A 03 4C 4E 4B 42 00 ...    "..LNKB."
+
+     321....        }
+     322....        Field(PCI0.ISA.P40C, ByteAcc, NoLock, Preserve) {
+     323....            PRQ0, 8,
+     324....            PRQ1, 8,
+     325....            PRQ2, 8,
+     326....            PRQ3, 8
+     327....        }
+
+00000CEE....5B 81 24 2F 03 50 43 49     "[.$/.PCI"
+00000CF6....30 49 53 41 5F 50 34 30     "0ISA_P40"
+00000CFE....43 01 50 52 51 30 08 50     "C.PRQ0.P"
+00000D06....52 51 31 08 50 52 51 32     "RQ1.PRQ2"
+00000D0E....08 50 52 51 33 08 ......    ".PRQ3."
+
+     328....        Method(IQST, 1, NotSerialized) {
+
+00000D14....14 13 49 51 53 54 01 ...    "..IQST."
+
+     329....            If (And(0x80, Arg0)) {
+
+00000D1B....A0 09 ..................    ".."
+00000D1D....7B 0A 80 68 00 .........    "{..h."
+
+     330....                Return (0x09)
+
+00000D22....A4 0A 09 ...............    "..."
+
+     331....            }
+     332....            Return (0x0B)
+
+00000D25....A4 0A 0B ...............    "..."
+
+     333....        }
+     334....        Method(IQCR, 1, Serialized) {
+
+00000D28....14 36 49 51 43 52 09 ...    ".6IQCR."
+
+     335....            Name(PRR0, ResourceTemplate() {
+
+00000D2F....08 50 52 52 30 11 0E 0A     ".PRR0..."
+00000D37....0B .....................    "."
+
+     336....                Interrupt(, Level, ActiveHigh, Shared) { 0 }
+
+00000D38....89 06 00 09 01 00 00 00     "........"
+00000D40....00 .....................    "."
+00000D41....79 00 ..................    "y."
+
+     337....            })
+     338....            CreateDWordField(PRR0, 0x05, PRRI)
+
+00000D43....8A 50 52 52 30 0A 05 50     ".PRR0..P"
+00000D4B....52 52 49 ...............    "RRI"
+
+     339....            If (LLess(Arg0, 0x80)) {
+
+00000D4E....A0 0B ..................    ".."
+00000D50....95 68 0A 80 ............    ".h.."
+
+     340....                Store(Arg0, PRRI)
+
+00000D54....70 68 50 52 52 49 ......    "phPRRI"
+
+     341....            }
+     342....            Return (PRR0)
+
+00000D5A....A4 50 52 52 30 .........    ".PRR0"
+
+     343....        }
+     344....        Device(LNKA) { Name(_HID, EISAID("PNP0C0F")) Name(_UID, 0) Name(_PRS, ResourceTemplate() { Interrupt(, Level, ActiveHigh, Shared) { 5, 10, 11 } }) Method(_STA, 0, NotSerialized) { Return (IQST(PRQ0)) } Method(_DIS, 0, NotSerialized) { Or(PRQ0, 0x80, PRQ0) } Method(_CRS, 0, NotSerialized) { Return (IQCR(PRQ0)) } Method(_SRS, 1, NotSerialized) { CreateDWordField(Arg0, 0x05, PRRI) Store(PRRI, PRQ0) } }
+
+[****iasl****]
+acpi-dsdt.dsl.i   344:         Device(LNKA) { Name(_HID, EISAID("PNP0C0F")) Name(_UID, 0) Name(_PRS, ResourceTemplate() { Interrupt(, Level, ActiveHigh, Shared) { 5, 10, 11 } }) Method(_STA, 0, NotSerialized) { Return (IQST(PRQ0)) } Method(_DIS, 0, NotSerialized) { Or(PRQ0, 0x80, PRQ0) } Method(_CRS, 0, NotSerialized) { Return (IQCR(PRQ0)) } Method(_SRS, 1, NotSerialized) { CreateDWordField(Arg0, 0x05, PRRI) Store(PRRI, PRQ0) } }
+Optimize 6033 -                            Integer optimized to single-byte AML opcode ^  (Zero)
+
+
+
+00000D5F....5B 82 4C 07 4C 4E 4B 41     "[.L.LNKA"
+00000D67....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000D6F....0C 0F ..................    ".."
+00000D71....08 5F 55 49 44 00 ......    "._UID."
+00000D77....08 5F 50 52 53 11 16 0A     "._PRS..."
+00000D7F....13 .....................    "."
+00000D80....89 0E 00 09 03 05 00 00     "........"
+00000D88....00 0A 00 00 00 0B 00 00     "........"
+00000D90....00 .....................    "."
+00000D91....79 00 ..................    "y."
+00000D93....14 0F 5F 53 54 41 00 ...    ".._STA."
+00000D9A....A4 .....................    "."
+00000D9B....49 51 53 54 50 52 51 30     "IQSTPRQ0"
+00000DA3....14 11 5F 44 49 53 00 ...    ".._DIS."
+00000DAA....7D 50 52 51 30 0A 80 50     "}PRQ0..P"
+00000DB2....52 51 30 ...............    "RQ0"
+00000DB5....14 0F 5F 43 52 53 00 ...    ".._CRS."
+00000DBC....A4 .....................    "."
+00000DBD....49 51 43 52 50 52 51 30     "IQCRPRQ0"
+00000DC5....14 17 5F 53 52 53 01 ...    ".._SRS."
+00000DCC....8A 68 0A 05 50 52 52 49     ".h..PRRI"
+00000DD4....70 50 52 52 49 50 52 51     "pPRRIPRQ"
+00000DDC....30 .....................    "0"
+
+     345....        Device(LNKB) { Name(_HID, EISAID("PNP0C0F")) Name(_UID, 1) Name(_PRS, ResourceTemplate() { Interrupt(, Level, ActiveHigh, Shared) { 5, 10, 11 } }) Method(_STA, 0, NotSerialized) { Return (IQST(PRQ1)) } Method(_DIS, 0, NotSerialized) { Or(PRQ1, 0x80, PRQ1) } Method(_CRS, 0, NotSerialized) { Return (IQCR(PRQ1)) } Method(_SRS, 1, NotSerialized) { CreateDWordField(Arg0, 0x05, PRRI) Store(PRRI, PRQ1) } }
+
+[****iasl****]
+acpi-dsdt.dsl.i   345:         Device(LNKB) { Name(_HID, EISAID("PNP0C0F")) Name(_UID, 1) Name(_PRS, ResourceTemplate() { Interrupt(, Level, ActiveHigh, Shared) { 5, 10, 11 } }) Method(_STA, 0, NotSerialized) { Return (IQST(PRQ1)) } Method(_DIS, 0, NotSerialized) { Or(PRQ1, 0x80, PRQ1) } Method(_CRS, 0, NotSerialized) { Return (IQCR(PRQ1)) } Method(_SRS, 1, NotSerialized) { CreateDWordField(Arg0, 0x05, PRRI) Store(PRRI, PRQ1) } }
+Optimize 6033 -                            Integer optimized to single-byte AML opcode ^  (One)
+
+
+
+00000DDD....5B 82 4C 07 4C 4E 4B 42     "[.L.LNKB"
+00000DE5....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000DED....0C 0F ..................    ".."
+00000DEF....08 5F 55 49 44 01 ......    "._UID."
+00000DF5....08 5F 50 52 53 11 16 0A     "._PRS..."
+00000DFD....13 .....................    "."
+00000DFE....89 0E 00 09 03 05 00 00     "........"
+00000E06....00 0A 00 00 00 0B 00 00     "........"
+00000E0E....00 .....................    "."
+00000E0F....79 00 ..................    "y."
+00000E11....14 0F 5F 53 54 41 00 ...    ".._STA."
+00000E18....A4 .....................    "."
+00000E19....49 51 53 54 50 52 51 31     "IQSTPRQ1"
+00000E21....14 11 5F 44 49 53 00 ...    ".._DIS."
+00000E28....7D 50 52 51 31 0A 80 50     "}PRQ1..P"
+00000E30....52 51 31 ...............    "RQ1"
+00000E33....14 0F 5F 43 52 53 00 ...    ".._CRS."
+00000E3A....A4 .....................    "."
+00000E3B....49 51 43 52 50 52 51 31     "IQCRPRQ1"
+00000E43....14 17 5F 53 52 53 01 ...    ".._SRS."
+00000E4A....8A 68 0A 05 50 52 52 49     ".h..PRRI"
+00000E52....70 50 52 52 49 50 52 51     "pPRRIPRQ"
+00000E5A....31 .....................    "1"
+
+     346....        Device(LNKC) { Name(_HID, EISAID("PNP0C0F")) Name(_UID, 2) Name(_PRS, ResourceTemplate() { Interrupt(, Level, ActiveHigh, Shared) { 5, 10, 11 } }) Method(_STA, 0, NotSerialized) { Return (IQST(PRQ2)) } Method(_DIS, 0, NotSerialized) { Or(PRQ2, 0x80, PRQ2) } Method(_CRS, 0, NotSerialized) { Return (IQCR(PRQ2)) } Method(_SRS, 1, NotSerialized) { CreateDWordField(Arg0, 0x05, PRRI) Store(PRRI, PRQ2) } }
+
+00000E5B....5B 82 4D 07 4C 4E 4B 43     "[.M.LNKC"
+00000E63....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000E6B....0C 0F ..................    ".."
+00000E6D....08 5F 55 49 44 0A 02 ...    "._UID.."
+00000E74....08 5F 50 52 53 11 16 0A     "._PRS..."
+00000E7C....13 .....................    "."
+00000E7D....89 0E 00 09 03 05 00 00     "........"
+00000E85....00 0A 00 00 00 0B 00 00     "........"
+00000E8D....00 .....................    "."
+00000E8E....79 00 ..................    "y."
+00000E90....14 0F 5F 53 54 41 00 ...    ".._STA."
+00000E97....A4 .....................    "."
+00000E98....49 51 53 54 50 52 51 32     "IQSTPRQ2"
+00000EA0....14 11 5F 44 49 53 00 ...    ".._DIS."
+00000EA7....7D 50 52 51 32 0A 80 50     "}PRQ2..P"
+00000EAF....52 51 32 ...............    "RQ2"
+00000EB2....14 0F 5F 43 52 53 00 ...    ".._CRS."
+00000EB9....A4 .....................    "."
+00000EBA....49 51 43 52 50 52 51 32     "IQCRPRQ2"
+00000EC2....14 17 5F 53 52 53 01 ...    ".._SRS."
+00000EC9....8A 68 0A 05 50 52 52 49     ".h..PRRI"
+00000ED1....70 50 52 52 49 50 52 51     "pPRRIPRQ"
+00000ED9....32 .....................    "2"
+
+     347....        Device(LNKD) { Name(_HID, EISAID("PNP0C0F")) Name(_UID, 3) Name(_PRS, ResourceTemplate() { Interrupt(, Level, ActiveHigh, Shared) { 5, 10, 11 } }) Method(_STA, 0, NotSerialized) { Return (IQST(PRQ3)) } Method(_DIS, 0, NotSerialized) { Or(PRQ3, 0x80, PRQ3) } Method(_CRS, 0, NotSerialized) { Return (IQCR(PRQ3)) } Method(_SRS, 1, NotSerialized) { CreateDWordField(Arg0, 0x05, PRRI) Store(PRRI, PRQ3) } }
+
+00000EDA....5B 82 4D 07 4C 4E 4B 44     "[.M.LNKD"
+00000EE2....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000EEA....0C 0F ..................    ".."
+00000EEC....08 5F 55 49 44 0A 03 ...    "._UID.."
+00000EF3....08 5F 50 52 53 11 16 0A     "._PRS..."
+00000EFB....13 .....................    "."
+00000EFC....89 0E 00 09 03 05 00 00     "........"
+00000F04....00 0A 00 00 00 0B 00 00     "........"
+00000F0C....00 .....................    "."
+00000F0D....79 00 ..................    "y."
+00000F0F....14 0F 5F 53 54 41 00 ...    ".._STA."
+00000F16....A4 .....................    "."
+00000F17....49 51 53 54 50 52 51 33     "IQSTPRQ3"
+00000F1F....14 11 5F 44 49 53 00 ...    ".._DIS."
+00000F26....7D 50 52 51 33 0A 80 50     "}PRQ3..P"
+00000F2E....52 51 33 ...............    "RQ3"
+00000F31....14 0F 5F 43 52 53 00 ...    ".._CRS."
+00000F38....A4 .....................    "."
+00000F39....49 51 43 52 50 52 51 33     "IQCRPRQ3"
+00000F41....14 17 5F 53 52 53 01 ...    ".._SRS."
+00000F48....8A 68 0A 05 50 52 52 49     ".h..PRRI"
+00000F50....70 50 52 52 49 50 52 51     "pPRRIPRQ"
+00000F58....33 .....................    "3"
+
+     348....        Device(LNKS) {
+
+00000F59....5B 82 4F 04 4C 4E 4B 53     "[.O.LNKS"
+
+     349....            Name(_HID, EISAID("PNP0C0F"))
+
+00000F61....08 5F 48 49 44 0C 41 D0     "._HID.A."
+00000F69....0C 0F ..................    ".."
+
+     350....            Name(_UID, 4)
+
+00000F6B....08 5F 55 49 44 0A 04 ...    "._UID.."
+
+     351....            Name(_PRS, ResourceTemplate() {
+
+00000F72....08 5F 50 52 53 11 0E 0A     "._PRS..."
+00000F7A....0B .....................    "."
+
+     352....                Interrupt(, Level, ActiveHigh, Shared) { 9 }
+
+00000F7B....89 06 00 09 01 09 00 00     "........"
+00000F83....00 .....................    "."
+00000F84....79 00 ..................    "y."
+
+     353....            })
+     354....            Method(_STA, 0, NotSerialized) { Return (0x0b) }
+
+00000F86....14 09 5F 53 54 41 00 ...    ".._STA."
+00000F8D....A4 0A 0B ...............    "..."
+
+     355....            Method(_DIS, 0, NotSerialized) { }
+
+00000F90....14 06 5F 44 49 53 00 ...    ".._DIS."
+
+     356....            Method(_CRS, 0, NotSerialized) { Return (_PRS) }
+
+00000F97....14 0B 5F 43 52 53 00 ...    ".._CRS."
+00000F9E....A4 5F 50 52 53 .........    "._PRS"
+
+     357....            Method(_SRS, 1, NotSerialized) { }
+
+00000FA3....14 06 5F 53 52 53 01 ...    ".._SRS."
+
+     358....        }
+     359....    }
+     360....Scope(\_SB) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   360: Scope(\_SB) {
+Optimize 6058 -                 ^ NamePath optimized (_SB_)
+
+
+
+00000FAA....10 42 11 5F 53 42 5F ...    ".B._SB_"
+
+     361....    External(NTFY, MethodObj)
+     362....    External(CPON, PkgObj)
+     363....    Method(CPMA, 1, NotSerialized) {
+
+00000FB1....14 35 43 50 4D 41 01 ...    ".5CPMA."
+
+     364....        Store(DerefOf(Index(CPON, Arg0)), Local0)
+
+00000FB8....70 .....................    "p"
+00000FB9....83 .....................    "."
+00000FBA....88 43 50 4F 4E 68 00 60     ".CPONh.`"
+
+     365....        Store(Buffer(8) {0x00, 0x08, 0x00, 0x00, 0x00, 0, 0, 0}, Local1)
+
+00000FC2....70 .....................    "p"
+00000FC3....11 0B 0A 08 00 08 00 00     "........"
+00000FCB....00 00 00 00 61 .........    "....a"
+
+     366....        Store(Arg0, Index(Local1, 2))
+
+00000FD0....70 68 ..................    "ph"
+00000FD2....88 61 0A 02 00 .........    ".a..."
+
+     367....        Store(Arg0, Index(Local1, 3))
+
+00000FD7....70 68 ..................    "ph"
+00000FD9....88 61 0A 03 00 .........    ".a..."
+
+     368....        Store(Local0, Index(Local1, 4))
+
+00000FDE....70 60 ..................    "p`"
+00000FE0....88 61 0A 04 00 .........    ".a..."
+
+     369....        Return (Local1)
+
+00000FE5....A4 61 ..................    ".a"
+
+     370....    }
+     371....    Method(CPST, 1, NotSerialized) {
+
+00000FE7....14 1A 43 50 53 54 01 ...    "..CPST."
+
+     372....        Store(DerefOf(Index(CPON, Arg0)), Local0)
+
+00000FEE....70 .....................    "p"
+00000FEF....83 .....................    "."
+00000FF0....88 43 50 4F 4E 68 00 60     ".CPONh.`"
+
+     373....        If (Local0) {
+
+00000FF8....A0 05 60 ...............    "..`"
+
+     374....            Return (0xF)
+
+00000FFB....A4 0A 0F ...............    "..."
+
+     375....        } Else {
+     376....            Return (0x0)
+
+[****iasl****]
+acpi-dsdt.dsl.i   376:             Return (0x0)
+Optimize 6033 -                              ^ Integer optimized to single-byte AML opcode (Zero)
+
+
+
+00000FFE....A1 03 ..................    ".."
+00001000....A4 00 ..................    ".."
+
+     377....        }
+     378....    }
+     379....    Method(CPEJ, 2, NotSerialized) {
+
+00001002....14 0A 43 50 45 4A 02 ...    "..CPEJ."
+
+     380....        Sleep(200)
+
+00001009....5B 22 0A C8 ............    "[".."
+
+     381....    }
+     382....    OperationRegion(PRST, SystemIO, 0xaf00, 32)
+
+0000100D....5B 80 50 52 53 54 01 0B     "[.PRST.."
+00001015....00 AF 0A 20 ............    "... "
+
+     383....    Field(PRST, ByteAcc, NoLock, Preserve) {
+     384....        PRS, 256
+     385....    }
+
+00001019....5B 81 0C 50 52 53 54 01     "[..PRST."
+00001021....50 52 53 5F 40 10 ......    "PRS_@."
+
+     386....    Method(PRSC, 0) {
+
+00001027....14 4A 06 50 52 53 43 00     ".J.PRSC."
+
+     387....        Store(PRS, Local5)
+
+0000102F....70 50 52 53 5F 65 ......    "pPRS_e"
+
+     388....        Store(Zero, Local2)
+
+00001035....70 00 62 ...............    "p.b"
+
+     389....        Store(Zero, Local0)
+
+00001038....70 00 60 ...............    "p.`"
+
+     390....        While (LLess(Local0, SizeOf(CPON))) {
+
+0000103B....A2 46 05 ...............    ".F."
+0000103E....95 60 ..................    ".`"
+00001040....87 43 50 4F 4E .........    ".CPON"
+
+     391....            Store(DerefOf(Index(CPON, Local0)), Local1)
+
+00001045....70 .....................    "p"
+00001046....83 .....................    "."
+00001047....88 43 50 4F 4E 60 00 61     ".CPON`.a"
+
+     392....            If (And(Local0, 0x07)) {
+
+0000104F....A0 0A ..................    ".."
+00001051....7B 60 0A 07 00 .........    "{`..."
+
+     393....                ShiftRight(Local2, 1, Local2)
+
+[****iasl****]
+acpi-dsdt.dsl.i   393:                 ShiftRight(Local2, 1, Local2)
+Optimize 6033 -                                           ^ Integer optimized to single-byte AML opcode (One)
+
+
+
+00001056....7A 62 01 62 ............    "zb.b"
+
+     394....            } Else {
+     395....                Store(DerefOf(Index(Local5, ShiftRight(Local0, 3))), Local2)
+
+0000105A....A1 0C ..................    ".."
+0000105C....70 .....................    "p"
+0000105D....83 .....................    "."
+0000105E....88 65 ..................    ".e"
+00001060....7A 60 0A 03 00 00 62 ...    "z`....b"
+
+     396....            }
+     397....            Store(And(Local2, 1), Local3)
+
+[****iasl****]
+acpi-dsdt.dsl.i   397:             Store(And(Local2, 1), Local3)
+Optimize 6033 -                                      ^ Integer optimized to single-byte AML opcode (One)
+
+
+
+00001067....70 .....................    "p"
+00001068....7B 62 01 00 63 .........    "{b..c"
+
+     398....            If (LNotEqual(Local1, Local3)) {
+
+0000106D....A0 22 ..................    ".""
+0000106F....92 .....................    "."
+00001070....93 61 63 ...............    ".ac"
+
+     399....                Store(Local3, Index(CPON, Local0))
+
+00001073....70 63 ..................    "pc"
+00001075....88 43 50 4F 4E 60 00 ...    ".CPON`."
+
+     400....                If (LEqual(Local3, 1)) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   400:                 If (LEqual(Local3, 1)) {
+Optimize 6033 -                                           ^ Integer optimized to single-byte AML opcode (One)
+
+
+
+0000107C....A0 0A ..................    ".."
+0000107E....93 63 01 ...............    ".c."
+
+     401....                    NTFY(Local0, 1)
+
+[****iasl****]
+acpi-dsdt.dsl.i   401:                     NTFY(Local0, 1)
+Optimize 6033 -                                         ^ Integer optimized to single-byte AML opcode (One)
+
+
+
+00001081....4E 54 46 59 60 01 ......    "NTFY`."
+
+     402....                } Else {
+     403....                    NTFY(Local0, 3)
+
+00001087....A1 08 ..................    ".."
+00001089....4E 54 46 59 60 0A 03 ...    "NTFY`.."
+
+     404....                }
+     405....            }
+     406....            Increment(Local0)
+
+00001090....75 60 ..................    "u`"
+
+     407....        }
+     408....    }
+     409....    Device(PRES) {
+
+00001092....5B 82 29 50 52 45 53 ...    "[.)PRES"
+
+     410....        Name(_HID, EisaId("PNP0A06"))
+
+00001099....08 5F 48 49 44 0C 41 D0     "._HID.A."
+000010A1....0A 06 ..................    ".."
+
+     411....        Name(_CRS, ResourceTemplate() {
+
+000010A3....08 5F 43 52 53 11 0D 0A     "._CRS..."
+000010AB....0A .....................    "."
+
+     412....            IO(Decode16, 0xaf00, 0xaf00, 0, 32)
+
+000010AC....47 01 00 AF 00 AF 00 20     "G...... "
+000010B4....79 00 ..................    "y."
+
+     413....        })
+     414....        Name(_STA, 0xB)
+
+000010B6....08 5F 53 54 41 0A 0B ...    "._STA.."
+
+     415....    }
+     416....}
+     417....    Scope(\_GPE) {
+
+[****iasl****]
+acpi-dsdt.dsl.i   417:     Scope(\_GPE) {
+Optimize 6058 -   NamePath optimized ^  (_GPE)
+
+
+
+000010BD....10 42 0C 5F 47 50 45 ...    ".B._GPE"
+
+     418....        Name(_HID, "ACPI0006")
+
+000010C4....08 5F 48 49 44 0D 41 43     "._HID.AC"
+000010CC....50 49 30 30 30 36 00 ...    "PI0006."
+
+     419....        Method(_L00) {
+
+000010D3....14 06 5F 4C 30 30 00 ...    ".._L00."
+
+     420....        }
+     421....        Method(_E01) {
+
+000010DA....14 39 5F 45 30 31 00 ...    ".9_E01."
+
+     422....            Acquire(\_SB.PCI0.BLCK, 0xFFFF)
+
+000010E1....5B 23 5C 2F 03 5F 53 42     "[#\/._SB"
+000010E9....5F 50 43 49 30 42 4C 43     "_PCI0BLC"
+000010F1....4B FF FF ...............    "K.."
+
+     423....            \_SB.PCI0.PCNT()
+
+000010F4....5C 2F 03 5F 53 42 5F 50     "\/._SB_P"
+000010FC....43 49 30 50 43 4E 54 ...    "CI0PCNT"
+
+     424....            Release(\_SB.PCI0.BLCK)
+
+00001103....5B 27 5C 2F 03 5F 53 42     "['\/._SB"
+0000110B....5F 50 43 49 30 42 4C 43     "_PCI0BLC"
+00001113....4B .....................    "K"
+
+     425....        }
+     426....        Method(_E02) {
+
+00001114....14 10 5F 45 30 32 00 ...    ".._E02."
+
+     427....            \_SB.PRSC()
+
+0000111B....5C 2E 5F 53 42 5F 50 52     "\._SB_PR"
+00001123....53 43 ..................    "SC"
+
+     428....        }
+     429....        Method(_L03) {
+
+00001125....14 06 5F 4C 30 33 00 ...    ".._L03."
+
+     430....        }
+     431....        Method(_L04) {
+
+0000112C....14 06 5F 4C 30 34 00 ...    ".._L04."
+
+     432....        }
+     433....        Method(_L05) {
+
+00001133....14 06 5F 4C 30 35 00 ...    ".._L05."
+
+     434....        }
+     435....        Method(_L06) {
+
+0000113A....14 06 5F 4C 30 36 00 ...    ".._L06."
+
+     436....        }
+     437....        Method(_L07) {
+
+00001141....14 06 5F 4C 30 37 00 ...    ".._L07."
+
+     438....        }
+     439....        Method(_L08) {
+
+00001148....14 06 5F 4C 30 38 00 ...    ".._L08."
+
+     440....        }
+     441....        Method(_L09) {
+
+0000114F....14 06 5F 4C 30 39 00 ...    ".._L09."
+
+     442....        }
+     443....        Method(_L0A) {
+
+00001156....14 06 5F 4C 30 41 00 ...    ".._L0A."
+
+     444....        }
+     445....        Method(_L0B) {
+
+0000115D....14 06 5F 4C 30 42 00 ...    ".._L0B."
+
+     446....        }
+     447....        Method(_L0C) {
+
+00001164....14 06 5F 4C 30 43 00 ...    ".._L0C."
+
+     448....        }
+     449....        Method(_L0D) {
+
+0000116B....14 06 5F 4C 30 44 00 ...    ".._L0D."
+
+     450....        }
+     451....        Method(_L0E) {
+
+00001172....14 06 5F 4C 30 45 00 ...    ".._L0E."
+
+     452....        }
+     453....        Method(_L0F) {
+
+00001179....14 06 5F 4C 30 46 00 ...    ".._L0F."
+     454....        }
+     455....    }
+     456....}
+     457....
+
+
+Summary of errors and warnings
+
+
+
+ASL Optimizing Compiler version 20100528 [Oct 15 2010]
+ASL Input:  acpi-dsdt.dsl.i - 458 lines, 19242 bytes, 306 keywords
+AML Output: acpi-dsdt.aml - 4480 bytes, 161 named objects, 145 executable opcodes
+
+Compilation complete. 0 Errors, 0 Warnings, 0 Remarks, 239 Optimizations
+
+

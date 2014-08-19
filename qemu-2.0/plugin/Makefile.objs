@@ -1,0 +1,13 @@
+# obj files addes to qemu
+obj-y += extra_hmp.o
+obj-y += linux-x86_64.o
+obj-y += syscall_checker.o
+obj-y += tasks.o
+obj-y += module.o
+obj-y += cpu_usage.o
+obj-y += mem_usage.o
+obj-y += memory.o
+obj-y += lib.o
+obj-y += configuration.o
+obj-y += net.o
+obj-y += daemon.o

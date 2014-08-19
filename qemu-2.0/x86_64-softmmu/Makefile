@@ -1,0 +1,1 @@
+/home/zhang/code/qemu/qemu-2.0/Makefile.target

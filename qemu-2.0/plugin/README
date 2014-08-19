@@ -1,0 +1,16 @@
+This QEMU has been added the following functionalities:
+
+1. top - CPU utilization.
+2. free - memory utilization.
+3. system call table integrity protector.
+4. ps - list all tasks in guest VM.
+5. lsmod - list all modules in guest VM.
+6. translate - gva to gpa translation by page table walking.
+7. hostname - obtain the guest OS information.
+8. ifconfig - obtain the network device information (IP and MAC).
+9. listen - monitor the resource usage (CPU, Mem) of VM remotely.
+
+Contact: Dongli Zhang (dongli.zhang0129@gmail.com)
+
+Please compile with ./configure --prefix=/test/qemu --target-list=i386-softmmu,x86_64-softmmu
+The libxml2-dev is required.

@@ -1,0 +1,1 @@
+LIBXML2_CFLAGS=-I/usr/include/libxml2

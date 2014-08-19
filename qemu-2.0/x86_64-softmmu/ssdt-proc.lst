@@ -1,0 +1,94 @@
+
+Intel ACPI Component Architecture
+ASL Optimizing Compiler version 20100528 [Oct 15 2010]
+Copyright (c) 2000 - 2010 Intel Corporation
+Supports ACPI Specification Revision 4.0a
+
+Compilation of "ssdt-proc.dsl.i" - Fri Jul 11 16:23:35 2014
+
+       1....
+       2..../* ACPI_EXTRACT_ALL_CODE ssdp_proc_aml */
+       3....
+       4....DefinitionBlock ("ssdt-proc.aml", "SSDT", 0x01, "BXPC", "BXSSDT", 0x1)
+
+00000000....53 53 44 54 78 00 00 00     "SSDTx..."
+00000008....01 79 42 58 50 43 00 00     ".yBXPC.."
+00000010....42 58 53 53 44 54 00 00     "BXSSDT.."
+00000018....01 00 00 00 49 4E 54 4C     "....INTL"
+00000020....28 05 10 20 ............    "(.. "
+
+       5....{
+       6....    
+       7..../* ACPI_EXTRACT_PROCESSOR_START ssdt_proc_start */
+       8....
+       9....    
+      10..../* ACPI_EXTRACT_PROCESSOR_END ssdt_proc_end */
+      11....
+      12....    
+      13..../* ACPI_EXTRACT_PROCESSOR_STRING ssdt_proc_name */
+      14....
+      15....    Processor(CPAA, 0xAA, 0x00000000, 0x0) {
+
+00000024....5B 83 42 05 43 50 41 41     "[.B.CPAA"
+0000002C....AA 00 00 00 00 00 ......    "......"
+
+      16....        
+      17..../* ACPI_EXTRACT_NAME_BYTE_CONST ssdt_proc_id */
+      18....
+      19....        Name(ID, 0xAA)
+
+00000032....08 49 44 5F 5F 0A AA ...    ".ID__.."
+
+      20....        Name(_HID, "ACPI0007")
+
+00000039....08 5F 48 49 44 0D 41 43     "._HID.AC"
+00000041....50 49 30 30 30 37 00 ...    "PI0007."
+
+      21....        External(CPMA, MethodObj)
+      22....        External(CPST, MethodObj)
+      23....        External(CPEJ, MethodObj)
+      24....        Method(_MAT, 0) {
+
+00000048....14 0F 5F 4D 41 54 00 ...    ".._MAT."
+
+      25....            Return (CPMA(ID))
+
+0000004F....A4 .....................    "."
+00000050....43 50 4D 41 49 44 5F 5F     "CPMAID__"
+
+      26....        }
+      27....        Method(_STA, 0) {
+
+00000058....14 0F 5F 53 54 41 00 ...    ".._STA."
+
+      28....            Return (CPST(ID))
+
+0000005F....A4 .....................    "."
+00000060....43 50 53 54 49 44 5F 5F     "CPSTID__"
+
+      29....        }
+      30....        Method(_EJ0, 1, NotSerialized) {
+
+00000068....14 0F 5F 45 4A 30 01 ...    ".._EJ0."
+
+      31....            CPEJ(ID, Arg0)
+
+0000006F....43 50 45 4A 49 44 5F 5F     "CPEJID__"
+00000077....68 .....................    "h"
+      32....        }
+      33....    }
+      34....}
+      35....
+
+
+Summary of errors and warnings
+
+
+
+ASL Optimizing Compiler version 20100528 [Oct 15 2010]
+ASL Input:  ssdt-proc.dsl.i - 36 lines, 761 bytes, 8 keywords
+AML Output: ssdt-proc.aml - 120 bytes, 6 named objects, 2 executable opcodes
+
+Compilation complete. 0 Errors, 0 Warnings, 0 Remarks, 0 Optimizations
+
+
