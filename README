@@ -10,6 +10,9 @@ This QEMU has been added the following functionalities:
 8. ifconfig - obtain the network device information (IP and MAC).
 9. listen - monitor the resource usage (CPU, Mem) of VM remotely.
 
+The kvm has been added the following functionalities:
+1. Secure encryption/decryption in hypervisor.
+
 Contact: Dongli Zhang (dongli.zhang0129@gmail.com)
 
 Please compile with ./configure --prefix=/test/qemu --target-list=i386-softmmu,x86_64-softmmu

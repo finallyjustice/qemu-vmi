@@ -1,0 +1,11 @@
+export ARCH=x86_64
+PREFIX=
+KERNELDIR=/lib/modules/3.16.0-30-generic/build
+KERNELSOURCEDIR=
+KERNELVERSION=3.16.0-30-generic
+export CROSS_COMPILE=
+export CC=gcc
+export LD=ld
+export OBJCOPY=objcopy
+export AR=ar
+KVM_VERSION=kvm-devel
