@@ -13,6 +13,9 @@ This QEMU has been added the following functionalities:
 The kvm has been added the following functionalities:
 1. Secure encryption/decryption in hypervisor.
 
+
+gos-info is a module to collect the Guest Operating System (gos) information.
+
 Contact: Dongli Zhang (dongli.zhang0129@gmail.com)
 
 Please compile with ./configure --prefix=/test/qemu --target-list=i386-softmmu,x86_64-softmmu
