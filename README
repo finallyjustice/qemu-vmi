@@ -16,6 +16,8 @@ The kvm has been added the following functionalities:
 
 gos-info is a module to collect the Guest Operating System (gos) information.
 
+kvm_crypt_mod is the driver inside guest VM to forward user's request to hypervisor. It has been tested on Ubuntu 12.04 with Linux 3.11.0
+
 Contact: Dongli Zhang (dongli.zhang0129@gmail.com)
 
 Please compile with ./configure --prefix=/test/qemu --target-list=i386-softmmu,x86_64-softmmu
